@@ -1,85 +1,108 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Trang Bán VPS Giá Rẻ</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trang Bán VPS & Thanh Toán</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f0f2f5;
-      color: #333;
-      line-height: 1.6;
-    }
+    body { font-family: Arial, sans-serif; background: #f4f4f4; color: #333; }
+
     header {
       background: #007bff;
       color: white;
-      padding: 2rem;
       text-align: center;
+      padding: 2rem;
     }
-    header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-    .plans {
+
+    .plans, .payment {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1.5rem;
       padding: 2rem;
     }
-    .plan {
+
+    .plan, .payment-form {
       background: white;
       padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      margin: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
       width: 300px;
+    }
+
+    .plan h2, .payment-form h2 {
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
       text-align: center;
     }
-    .plan h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-    .plan p {
-      margin: 0.5rem 0;
-    }
+
     .price {
-      font-size: 1.2rem;
+      color: green;
       font-weight: bold;
-      color: #28a745;
+      margin: 1rem 0;
+      text-align: center;
     }
+
     .plan a {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
+      display: block;
+      text-align: center;
       background: #28a745;
       color: white;
-      text-decoration: none;
+      padding: 0.6rem;
       border-radius: 6px;
-      transition: background 0.3s;
+      text-decoration: none;
+      transition: 0.3s;
     }
-    .plan a:hover {
-      background: #218838;
+
+    .plan a:hover { background: #218838; }
+
+    .payment-form label {
+      display: block;
+      margin: 0.5rem 0 0.2rem;
     }
+
+    .payment-form input, .payment-form select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .payment-form button {
+      width: 100%;
+      padding: 0.6rem;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .payment-form button:hover {
+      background: #0056b3;
+    }
+
     footer {
       background: #222;
-      color: #eee;
+      color: white;
       text-align: center;
       padding: 1rem;
-      font-size: 0.9rem;
       margin-top: 2rem;
     }
 
     @media(max-width: 768px) {
-      .plans {
-        flex-direction: column;
-        align-items: center;
-      }
+      .plans, .payment { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>🔥 Bán VPS Giá Rẻ</h1>
-    <p>Hiệu năng ổn định - Hỗ trợ 24/7 - Giá cực tốt</p>
+    <h1>💻 Dịch Vụ Bán VPS Giá Rẻ</h1>
+    <p>Uy tín - Ổn định - Hỗ trợ 24/7</p>
   </header>
 
   <section class="plans">
@@ -87,25 +110,68 @@
       <h2>Gói Cơ Bản</h2>
       <p>1 CPU | 1GB RAM | 25GB SSD</p>
       <p class="price">50.000đ/tháng</p>
-      <a href="#">Mua Ngay</a>
+      <a href="#thanhtoan">Mua Ngay</a>
     </div>
+
     <div class="plan">
       <h2>Gói Phổ Biến</h2>
       <p>2 CPU | 2GB RAM | 50GB SSD</p>
       <p class="price">90.000đ/tháng</p>
-      <a href="#">Mua Ngay</a>
+      <a href="#thanhtoan">Mua Ngay</a>
     </div>
+
     <div class="plan">
       <h2>Gói Cao Cấp</h2>
       <p>4 CPU | 4GB RAM | 100GB SSD</p>
       <p class="price">160.000đ/tháng</p>
-      <a href="#">Mua Ngay</a>
+      <a href="#thanhtoan">Mua Ngay</a>
+    </div>
+  </section>
+
+  <section class="payment" id="thanhtoan">
+    <div class="payment-form">
+      <h2>🧾 Thanh Toán VPS</h2>
+      <form onsubmit="submitForm(event)">
+        <label>Họ và tên</label>
+        <input type="text" required placeholder="Nguyễn Văn A">
+
+        <label>Email</label>
+        <input type="email" required placeholder="email@example.com">
+
+        <label>Số điện thoại</label>
+        <input type="tel" required placeholder="0123456789">
+
+        <label>Chọn gói VPS</label>
+        <select required>
+          <option value="">-- Chọn gói --</option>
+          <option>Gói Cơ Bản - 50.000đ</option>
+          <option>Gói Phổ Biến - 90.000đ</option>
+          <option>Gói Cao Cấp - 160.000đ</option>
+        </select>
+
+        <label>Hình thức thanh toán</label>
+        <select required>
+          <option value="">-- Chọn --</option>
+          <option>Chuyển khoản MOMO</option>
+          <option>Chuyển khoản Ngân hàng</option>
+        </select>
+
+        <button type="submit">Xác Nhận Thanh Toán</button>
+      </form>
     </div>
   </section>
 
   <footer>
-    <p>Liên hệ: Zalo 0123.456.789 | Email: vpsgiatot@example.com</p>
-    <p>© 2025 VPS Giá Rẻ. All rights reserved.</p>
+    <p>Liên hệ Zalo: 0123 456 789 | Email: vpsgiatot@example.com</p>
+    <p>© 2025 VPS Giá Rẻ</p>
   </footer>
+
+  <script>
+    function submitForm(e) {
+      e.preventDefault();
+      alert("Đơn hàng đã được ghi nhận! Chúng tôi sẽ liên hệ sớm.");
+    }
+  </script>
+
 </body>
 </html>
