@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trang Bán VPS Giá Rẻ</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f2f5;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: #007bff;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .plans {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+    .plan {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+    }
+    .plan h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .plan p {
+      margin: 0.5rem 0;
+    }
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #28a745;
+    }
+    .plan a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: #28a745;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    .plan a:hover {
+      background: #218838;
+    }
+    footer {
+      background: #222;
+      color: #eee;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+
+    @media(max-width: 768px) {
+      .plans {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔥 Bán VPS Giá Rẻ</h1>
+    <p>Hiệu năng ổn định - Hỗ trợ 24/7 - Giá cực tốt</p>
+  </header>
+
+  <section class="plans">
+    <div class="plan">
+      <h2>Gói Cơ Bản</h2>
+      <p>1 CPU | 1GB RAM | 25GB SSD</p>
+      <p class="price">50.000đ/tháng</p>
+      <a href="#">Mua Ngay</a>
+    </div>
+    <div class="plan">
+      <h2>Gói Phổ Biến</h2>
+      <p>2 CPU | 2GB RAM | 50GB SSD</p>
+      <p class="price">90.000đ/tháng</p>
+      <a href="#">Mua Ngay</a>
+    </div>
+    <div class="plan">
+      <h2>Gói Cao Cấp</h2>
+      <p>4 CPU | 4GB RAM | 100GB SSD</p>
+      <p class="price">160.000đ/tháng</p>
+      <a href="#">Mua Ngay</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Liên hệ: Zalo 0123.456.789 | Email: vpsgiatot@example.com</p>
+    <p>© 2025 VPS Giá Rẻ. All rights reserved.</p>
+  </footer>
+</body>
+</html>
