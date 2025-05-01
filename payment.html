@@ -14,26 +14,150 @@
                 'coban': { 
                     name: 'Cơ bản', 
                     price: '199.000đ/tháng',
-                    amount: '199.000đ'
+                    amount: '199.000đ',
+                    amountNumber: 199000
                 },
                 'doanhnghiep': { 
                     name: 'Doanh nghiệp', 
                     price: '699.000đ/tháng',
-                    amount: '699.000đ'
+                    amount: '699.000đ',
+                    amountNumber: 699000
                 },
                 'caocap': { 
                     name: 'Cao cấp', 
                     price: '1.999.000đ/tháng',
-                    amount: '1.999.000đ'
+                    amount: '1.999.000đ',
+                    amountNumber: 1999000
                 }
             };
             
             if (goi && goiInfo[goi]) {
+                // Hiển thị thông tin đơn hàng
                 document.getElementById('goi-name').textContent = goiInfo[goi].name;
                 document.getElementById('goi-price').textContent = goiInfo[goi].price;
                 document.getElementById('total-amount').textContent = goiInfo[goi].amount;
+                
+                // Thiết lập giá trị ẩn cho form
                 document.querySelector('input[name="goi_dich_vu"]').value = goiInfo[goi].name;
-                document.querySelector('input[name="tong_tien"]').value = goiInfo[goi].amount;
+                document.querySelector('input[name="tong_tien"]').value = goiInfo[goi].amountNumber;
+                
+                // Tạo mã hóa đơn ngẫu nhiên
+                const invoiceNumber = 'INV-' + Date.now() + '-' + Math.floor(Math.random() * 1000);
+                document.querySelector('input[name="ma_hoa_don"]').value = invoiceNumber;
+                document.getElementById('invoice-number').textContent = invoiceNumber;
+            }
+            
+            // Xử lý submit form
+            document.getElementById('payment-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Lấy thông tin form
+                const formData = new FormData(this);
+                const customerData = Object.fromEntries(formData.entries());
+                
+                // Tạo hóa đơn
+                generateInvoice(customerData, goiInfo[goi]);
+                
+                // Gửi form thực sự
+                this.submit();
+            });
+            
+            function generateInvoice(customer, product) {
+                // Tạo nội dung hóa đơn
+                const invoiceContent = `
+                    <div class="invoice">
+                        <h2>HÓA ĐƠN THANH TOÁN</h2>
+                        <div class="invoice-header">
+                            <div class="invoice-info">
+                                <p><strong>Mã hóa đơn:</strong> ${customer.ma_hoa_don}</p>
+                                <p><strong>Ngày:</strong> ${new Date().toLocaleDateString('vi-VN')}</p>
+                            </div>
+                            <div class="company-info">
+                                <h3>SkyVPS</h3>
+                                <p>123 Đường Cloud, TP.HCM</p>
+                                <p>MST: 0123456789</p>
+                            </div>
+                        </div>
+                        
+                        <div class="customer-info">
+                            <h3>Thông tin khách hàng</h3>
+                            <p><strong>Tên:</strong> ${customer.fullname}</p>
+                            <p><strong>Email:</strong> ${customer.email}</p>
+                            <p><strong>SĐT:</strong> ${customer.phone}</p>
+                            ${customer.company ? `<p><strong>Công ty:</strong> ${customer.company}</p>` : ''}
+                        </div>
+                        
+                        <div class="invoice-details">
+                            <h3>Chi tiết hóa đơn</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Mô tả</th>
+                                        <th>Đơn giá</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Gói VPS ${product.name}</td>
+                                        <td>${product.amount}</td>
+                                    </tr>
+                                    <tr class="total">
+                                        <td><strong>Tổng cộng</strong></td>
+                                        <td><strong>${product.amount}</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="payment-method">
+                            <p><strong>Phương thức thanh toán:</strong> ${customer.payment_method}</p>
+                        </div>
+                        
+                        <div class="invoice-footer">
+                            <p>Cảm ơn quý khách đã sử dụng dịch vụ của SkyVPS</p>
+                            <p>Hóa đơn này có giá trị như một biên lai thanh toán</p>
+                        </div>
+                    </div>
+                `;
+                
+                // Mở cửa sổ mới để in hóa đơn
+                const invoiceWindow = window.open('', '_blank');
+                invoiceWindow.document.write(`
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>Hóa đơn ${customer.ma_hoa_don}</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; margin: 0; padding: 20px; color: #333; }
+                            .invoice { max-width: 800px; margin: 0 auto; border: 1px solid #eee; padding: 20px; }
+                            .invoice-header { display: flex; justify-content: space-between; margin-bottom: 20px; }
+                            .invoice-info p, .company-info p { margin: 5px 0; }
+                            table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+                            th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+                            .total td { border-top: 2px solid #333; font-weight: bold; }
+                            .invoice-footer { margin-top: 30px; text-align: center; font-style: italic; }
+                            @media print {
+                                .no-print { display: none; }
+                                body { padding: 0; }
+                            }
+                            .print-btn { 
+                                background: #3498db; 
+                                color: white; 
+                                border: none; 
+                                padding: 10px 15px; 
+                                cursor: pointer; 
+                                margin: 20px auto; 
+                                display: block; 
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        ${invoiceContent}
+                        <button class="print-btn no-print" onclick="window.print()">In Hóa Đơn</button>
+                    </body>
+                    </html>
+                `);
+                invoiceWindow.document.close();
             }
         });
     </script>
@@ -63,6 +187,10 @@
                 <div class="order-summary">
                     <h2>Đơn hàng của bạn</h2>
                     <div class="summary-item">
+                        <span>Mã hóa đơn:</span>
+                        <span id="invoice-number"></span>
+                    </div>
+                    <div class="summary-item">
                         <span>Gói dịch vụ:</span>
                         <span id="goi-name"></span>
                     </div>
@@ -76,11 +204,12 @@
                     </div>
                 </div>
                 
-                <form action="https://formsubmit.co/your-email@example.com" method="POST" class="payment-form">
+                <form id="payment-form" action="https://formsubmit.co/longpubg02ml1@gmail.com" method="POST" class="payment-form">
                     <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://yourdomain.com/cam-on.html">
+                    <input type="hidden" name="_next" value="https://longdz137.github.io/myvps/thank.html">https://longdz137.github.io/myvps/thank.html
                     <input type="hidden" name="goi_dich_vu" value="">
                     <input type="hidden" name="tong_tien" value="">
+                    <input type="hidden" name="ma_hoa_don" value="">
                     
                     <h2>Thông tin khách hàng</h2>
                     <div class="form-group">
