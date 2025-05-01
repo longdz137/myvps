@@ -11,15 +11,29 @@
             const goi = urlParams.get('goi');
             
             let goiInfo = {
-                'coban': { name: 'Cơ bản', price: '199.000đ/tháng' },
-                'doanhnghiep': { name: 'Doanh nghiệp', price: '699.000đ/tháng' },
-                'caocap': { name: 'Cao cấp', price: '1.999.000đ/tháng' }
+                'coban': { 
+                    name: 'Cơ bản', 
+                    price: '199.000đ/tháng',
+                    amount: '199.000đ'
+                },
+                'doanhnghiep': { 
+                    name: 'Doanh nghiệp', 
+                    price: '699.000đ/tháng',
+                    amount: '699.000đ'
+                },
+                'caocap': { 
+                    name: 'Cao cấp', 
+                    price: '1.999.000đ/tháng',
+                    amount: '1.999.000đ'
+                }
             };
             
             if (goi && goiInfo[goi]) {
                 document.getElementById('goi-name').textContent = goiInfo[goi].name;
                 document.getElementById('goi-price').textContent = goiInfo[goi].price;
+                document.getElementById('total-amount').textContent = goiInfo[goi].amount;
                 document.querySelector('input[name="goi_dich_vu"]').value = goiInfo[goi].name;
+                document.querySelector('input[name="tong_tien"]').value = goiInfo[goi].amount;
             }
         });
     </script>
@@ -58,14 +72,15 @@
                     </div>
                     <div class="summary-item total">
                         <span>Tổng cộng:</span>
-                        <span id="goi-price"></span>
+                        <span id="total-amount"></span>
                     </div>
                 </div>
                 
-                <form action="https://formsubmit.co/longpubg02ml1@gmail.com" method="POST" class="payment-form">
+                <form action="https://formsubmit.co/your-email@example.com" method="POST" class="payment-form">
                     <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://longdz137.github.io/myvps/thank.html">
+                    <input type="hidden" name="_next" value="https://yourdomain.com/cam-on.html">
                     <input type="hidden" name="goi_dich_vu" value="">
+                    <input type="hidden" name="tong_tien" value="">
                     
                     <h2>Thông tin khách hàng</h2>
                     <div class="form-group">
