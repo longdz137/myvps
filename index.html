@@ -1,122 +1,136 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Đặt Mua VPS - Công Ty ABC</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
-
-    body {
-      margin: 0;
-      background-color: #f7f9fc;
-      color: #333;
-    }
-
-    header {
-      background-color: #0d6efd;
-      color: #fff;
-      padding: 20px 40px;
-      text-align: center;
-    }
-
-    .container {
-      max-width: 700px;
-      margin: 40px auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
-    }
-
-    h2 {
-      margin-top: 0;
-      color: #0d6efd;
-    }
-
-    label {
-      display: block;
-      margin-top: 20px;
-      font-weight: 600;
-    }
-
-    input, select {
-      width: 100%;
-      padding: 12px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-
-    button {
-      margin-top: 30px;
-      width: 100%;
-      padding: 14px;
-      background-color: #198754;
-      color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    button:hover {
-      background-color: #157347;
-    }
-
-    footer {
-      margin-top: 60px;
-      text-align: center;
-      font-size: 14px;
-      color: #888;
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        margin: 20px;
-        padding: 20px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dịch vụ VPS Chất lượng Cao</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background: #0066cc;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .vps-plans {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+        }
+        .plan {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            width: 30%;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .plan h3 {
+            color: #0066cc;
+        }
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+        .btn {
+            display: inline-block;
+            background: #0066cc;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <div class="container">
+            <h1>Dịch vụ VPS Chuyên nghiệp</h1>
+            <p>Hiệu năng cao - Ổn định - Hỗ trợ 24/7</p>
+        </div>
+    </header>
 
-<header>
-  <h1>ĐẶT MUA VPS - CÔNG TY ABC</h1>
-</header>
+    <div class="container">
+        <section class="intro">
+            <h2>VPS của chúng tôi</h2>
+            <p>Cung cấp giải pháp máy chủ ảo mạnh mẽ với hiệu năng vượt trội, bảo mật tối đa và hỗ trợ kỹ thuật 24/7.</p>
+        </section>
 
-<div class="container">
-  <h2>Thông Tin Đơn Hàng</h2>
-  <form action="payment.html" method="GET">
-    <label for="name">Họ và Tên</label>
-    <input type="text" id="name" name="Họ và Tên" required>
+        <section class="vps-plans">
+            <div class="plan">
+                <h3>VPS Cơ bản</h3>
+                <ul>
+                    <li>1 CPU Core</li>
+                    <li>2GB RAM</li>
+                    <li>40GB SSD</li>
+                    <li>Băng thông 1TB</li>
+                    <li>1 IPv4</li>
+                </ul>
+                <div class="price">199,000đ/tháng</div>
+                <a href="#" class="btn">Đăng ký ngay</a>
+            </div>
 
-    <label for="email">Email</label>
-    <input type="email" id="email" name="Email" required>
+            <div class="plan">
+                <h3>VPS Tiêu chuẩn</h3>
+                <ul>
+                    <li>2 CPU Core</li>
+                    <li>4GB RAM</li>
+                    <li>80GB SSD</li>
+                    <li>Băng thông 2TB</li>
+                    <li>1 IPv4</li>
+                </ul>
+                <div class="price">399,000đ/tháng</div>
+                <a href="#" class="btn">Đăng ký ngay</a>
+            </div>
 
-    <label for="phone">Số điện thoại</label>
-    <input type="tel" id="phone" name="SĐT" required>
+            <div class="plan">
+                <h3>VPS Cao cấp</h3>
+                <ul>
+                    <li>4 CPU Core</li>
+                    <li>8GB RAM</li>
+                    <li>160GB SSD</li>
+                    <li>Băng thông không giới hạn</li>
+                    <li>2 IPv4</li>
+                </ul>
+                <div class="price">799,000đ/tháng</div>
+                <a href="#" class="btn">Đăng ký ngay</a>
+            </div>
+        </section>
 
-    <label for="vps">Chọn Gói VPS</label>
-    <select id="vps" name="Gói VPS" required>
-      <option value="">-- Chọn gói --</option>
-      <option value="Cơ Bản">Cơ Bản - 50.000đ</option>
-      <option value="Phổ Thông">Phổ Thông - 90.000đ</option>
-      <option value="Doanh Nghiệp">Doanh Nghiệp - 160.000đ</option>
-    </select>
+        <section class="features">
+            <h2>Tính năng nổi bật</h2>
+            <ul>
+                <li>100% ổ cứng SSD Enterprise</li>
+                <li>Công nghệ ảo hóa KVM/Xen</li>
+                <li>Quản trị VPS dễ dàng với Control Panel</li>
+                <li>Sao lưu dữ liệu định kỳ</li>
+                <li>Hỗ trợ cài đặt nhiều hệ điều hành</li>
+            </ul>
+        </section>
+    </div>
 
-    <button type="submit">🔐 Đi đến trang thanh toán</button>
-  </form>
-</div>
-
-<footer>
-  © 2025 Công Ty ABC. All rights reserved.
-</footer>
-
+    <footer>
+        <div class="container">
+            <p>© 2023 Dịch vụ VPS. Liên hệ: support@vpscuaban.com - Hotline: 1900 1234</p>
+        </div>
+    </footer>
 </body>
 </html>
