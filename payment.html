@@ -3,338 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thanh Toán VPS - Dịch vụ VPS Chất lượng Cao</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            background-color: #f5f5f5;
-        }
-        header {
-            background: #0066cc;
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-        }
-        .container {
-            width: 80%;
-            margin: 2rem auto;
-            overflow: hidden;
-            background: white;
-            padding: 2rem;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .checkout-summary {
-            background: #f9f9f9;
-            padding: 1.5rem;
-            border-radius: 5px;
-            margin-bottom: 2rem;
-            border: 1px solid #ddd;
-        }
-        .checkout-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-        .form-group input, 
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        .full-width {
-            grid-column: 1 / -1;
-        }
-        .btn {
-            display: inline-block;
-            background: #0066cc;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background 0.3s;
-        }
-        .btn:hover {
-            background: #0055aa;
-        }
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 1.5rem 0;
-            margin-top: 2rem;
-        }
-        .payment-methods {
-            margin: 1.5rem 0;
-        }
-        .payment-method {
-            display: inline-block;
-            margin-right: 1rem;
-            padding: 0.5rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .payment-method.active {
-            border-color: #0066cc;
-            background: #e6f2ff;
-        }
-        .hidden {
-            display: none;
-        }
-    </style>
+    <title>Thanh toán - SkyVPS</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const goi = urlParams.get('goi');
+            
+            let goiInfo = {
+                'coban': { name: 'Cơ bản', price: '199.000đ/tháng' },
+                'doanhnghiep': { name: 'Doanh nghiệp', price: '699.000đ/tháng' },
+                'caocap': { name: 'Cao cấp', price: '1.999.000đ/tháng' }
+            };
+            
+            if (goi && goiInfo[goi]) {
+                document.getElementById('goi-name').textContent = goiInfo[goi].name;
+                document.getElementById('goi-price').textContent = goiInfo[goi].price;
+                document.querySelector('input[name="goi_dich_vu"]').value = goiInfo[goi].name;
+            }
+        });
+    </script>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Thanh Toán VPS</h1>
-            <p>Hoàn tất đăng ký dịch vụ VPS của bạn</p>
+            <div class="header-content">
+                <div class="logo">SkyVPS</div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="index.html#plans">Gói dịch vụ</a></li>
+                        <li><a href="index.html#features">Tính năng</a></li>
+                        <li><a href="index.html#contact">Liên hệ</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
-
-    <div class="container">
-        <div class="checkout-summary">
-            <h2>Thông Tin Gói VPS</h2>
-            <div id="plan-info">
-                <!-- Thông tin gói VPS sẽ được điền bằng JavaScript -->
+    
+    <section class="payment">
+        <div class="container">
+            <h1>Thông Tin Thanh Toán</h1>
+            
+            <div class="payment-container">
+                <div class="order-summary">
+                    <h2>Đơn hàng của bạn</h2>
+                    <div class="summary-item">
+                        <span>Gói dịch vụ:</span>
+                        <span id="goi-name"></span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Giá:</span>
+                        <span id="goi-price"></span>
+                    </div>
+                    <div class="summary-item total">
+                        <span>Tổng cộng:</span>
+                        <span id="goi-price"></span>
+                    </div>
+                </div>
+                
+                <form action="https://formsubmit.co/longpubg02ml1@gmail.com" method="POST" class="payment-form">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://yourdomain.com/cam-on.html">
+                    <input type="hidden" name="goi_dich_vu" value="">
+                    
+                    <h2>Thông tin khách hàng</h2>
+                    <div class="form-group">
+                        <label for="fullname">Họ và tên*</label>
+                        <input type="text" id="fullname" name="fullname" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email*</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Số điện thoại*</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Công ty (nếu có)</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    
+                    <h2>Phương thức thanh toán</h2>
+                    <div class="payment-methods">
+                        <div class="payment-method">
+                            <input type="radio" id="bank-transfer" name="payment_method" value="Chuyển khoản" checked>
+                            <label for="bank-transfer">Chuyển khoản ngân hàng</label>
+                        </div>
+                        <div class="payment-method">
+                            <input type="radio" id="momo" name="payment_method" value="Ví MoMo">
+                            <label for="momo">Ví MoMo</label>
+                        </div>
+                        <div class="payment-method">
+                            <input type="radio" id="zalopay" name="payment_method" value="ZaloPay">
+                            <label for="zalopay">ZaloPay</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="note">Ghi chú (nếu có)</label>
+                        <textarea id="note" name="note" rows="3"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Hoàn tất đăng ký</button>
+                </form>
             </div>
         </div>
-
-        <form id="payment-form" class="checkout-form" onsubmit="return processPayment(event)">
-            <h2 class="full-width">Thông Tin Thanh Toán</h2>
-            
-            <div class="form-group">
-                <label for="fullname">Họ và Tên</label>
-                <input type="text" id="fullname" name="fullname" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="phone">Số Điện Thoại</label>
-                <input type="tel" id="phone" name="phone" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="address">Địa Chỉ</label>
-                <input type="text" id="address" name="address" required>
-            </div>
-            
-            <div class="form-group full-width">
-                <label>Phương Thức Thanh Toán</label>
-                <div class="payment-methods">
-                    <div class="payment-method active" onclick="selectPaymentMethod(this, 'bank')">
-                        Chuyển Khoản Ngân Hàng
-                    </div>
-                    <div class="payment-method" onclick="selectPaymentMethod(this, 'momo')">
-                        Ví MoMo
-                    </div>
-                    <div class="payment-method" onclick="selectPaymentMethod(this, 'credit')">
-                        Thẻ Tín Dụng
-                    </div>
-                </div>
-                
-                <div id="bank-details" class="payment-details">
-                    <h3>Thông Tin Chuyển Khoản</h3>
-                    <p>Ngân hàng: Vietcombank</p>
-                    <p>Số tài khoản: 123456789</p>
-                    <p>Chủ tài khoản: Công ty TNHH VPS Pro</p>
-                    <p>Nội dung chuyển khoản: VPS_[Số điện thoại của bạn]</p>
-                </div>
-                
-                <div id="momo-details" class="payment-details hidden">
-                    <h3>Thanh Toán Bằng MoMo</h3>
-                    <p>Số điện thoại MoMo: 0901234567</p>
-                    <p>Tên người nhận: VPS Pro</p>
-                    <p>Nội dung: VPS_[Số điện thoại của bạn]</p>
-                    <p>Hoặc quét mã QR bên dưới:</p>
-                    <!-- Thêm hình QR code ở đây -->
-                </div>
-                
-                <div id="credit-details" class="payment-details hidden">
-                    <h3>Thông Tin Thẻ Tín Dụng</h3>
-                    <div class="form-group">
-                        <label for="card-number">Số Thẻ</label>
-                        <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456">
-                    </div>
-                    <div class="form-group">
-                        <label for="card-name">Tên Trên Thẻ</label>
-                        <input type="text" id="card-name" name="card-name">
-                    </div>
-                    <div style="display: flex; gap: 1rem;">
-                        <div class="form-group" style="flex: 1;">
-                            <label for="card-expiry">Ngày Hết Hạn</label>
-                            <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/YY">
-                        </div>
-                        <div class="form-group" style="flex: 1;">
-                            <label for="card-cvv">CVV</label>
-                            <input type="text" id="card-cvv" name="card-cvv" placeholder="123">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="form-group full-width">
-                <label for="notes">Ghi Chú (Nếu có)</label>
-                <textarea id="notes" name="notes" rows="3" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;"></textarea>
-            </div>
-            
-            <div class="form-group full-width">
-                <input type="checkbox" id="agree-terms" name="agree-terms" required>
-                <label for="agree-terms">Tôi đồng ý với các điều khoản và chính sách dịch vụ</label>
-            </div>
-            
-            <div class="form-group full-width">
-                <button type="submit" class="btn">Hoàn Tất Đăng Ký</button>
-            </div>
-        </form>
-    </div>
-
+    </section>
+    
     <footer>
         <div class="container">
-            <p>© 2023 Dịch vụ VPS. Liên hệ: support@vpscuaban.com - Hotline: 1900 1234</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SkyVPS</h3>
+                    <p>Cung cấp máy chủ đám mây hiệu năng cao từ năm 2015.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Hỗ trợ</h3>
+                    <ul>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                        <li><a href="#">Hướng dẫn thanh toán</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li>Email: support@skyvps.vn</li>
+                        <li>Hotline: 1900 1234</li>
+                        <li>Giờ làm việc: 8:00 - 17:00</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 SkyVPS. Bảo lưu mọi quyền.</p>
+            </div>
         </div>
     </footer>
-
-    <script>
-        // Lấy thông tin gói VPS từ URL hoặc localStorage
-        document.addEventListener('DOMContentLoaded', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const plan = urlParams.get('plan') || localStorage.getItem('selectedPlan');
-            
-            let planInfo = '';
-            switch(plan) {
-                case 'basic':
-                    planInfo = `
-                        <h3>VPS Cơ Bản</h3>
-                        <ul>
-                            <li>1 CPU Core</li>
-                            <li>2GB RAM</li>
-                            <li>40GB SSD</li>
-                            <li>Băng thông 1TB</li>
-                            <li>1 IPv4</li>
-                        </ul>
-                        <p class="price">199,000đ/tháng</p>
-                    `;
-                    break;
-                case 'standard':
-                    planInfo = `
-                        <h3>VPS Tiêu Chuẩn</h3>
-                        <ul>
-                            <li>2 CPU Core</li>
-                            <li>4GB RAM</li>
-                            <li>80GB SSD</li>
-                            <li>Băng thông 2TB</li>
-                            <li>1 IPv4</li>
-                        </ul>
-                        <p class="price">399,000đ/tháng</p>
-                    `;
-                    break;
-                case 'premium':
-                    planInfo = `
-                        <h3>VPS Cao Cấp</h3>
-                        <ul>
-                            <li>4 CPU Core</li>
-                            <li>8GB RAM</li>
-                            <li>160GB SSD</li>
-                            <li>Băng thông không giới hạn</li>
-                            <li>2 IPv4</li>
-                        </ul>
-                        <p class="price">799,000đ/tháng</p>
-                    `;
-                    break;
-                default:
-                    planInfo = `<p>Không có thông tin gói VPS. Vui lòng chọn gói từ trang chủ.</p>`;
-            }
-            
-            document.getElementById('plan-info').innerHTML = planInfo;
-        });
-
-        function selectPaymentMethod(element, method) {
-            // Xóa active class từ tất cả các phương thức
-            document.querySelectorAll('.payment-method').forEach(el => {
-                el.classList.remove('active');
-            });
-            
-            // Thêm active class cho phương thức được chọn
-            element.classList.add('active');
-            
-            // Ẩn tất cả các chi tiết thanh toán
-            document.querySelectorAll('.payment-details').forEach(el => {
-                el.classList.add('hidden');
-            });
-            
-            // Hiển thị chi tiết thanh toán được chọn
-            document.getElementById(method + '-details').classList.remove('hidden');
-        }
-
-        function processPayment(event) {
-            event.preventDefault();
-            
-            // Lấy thông tin từ form
-            const formData = {
-                fullname: document.getElementById('fullname').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                address: document.getElementById('address').value,
-                plan: document.getElementById('plan-info').querySelector('h3').textContent,
-                price: document.getElementById('plan-info').querySelector('.price').textContent,
-                paymentMethod: document.querySelector('.payment-method.active').textContent.trim(),
-                notes: document.getElementById('notes').value
-            };
-            
-            // Gửi email (sử dụng FormSubmit.co hoặc dịch vụ tương tự)
-            const emailEndpoint = "https://formsubmit.co/ajax/longpubg02ml1@gmail.com";
-            
-            fetch(emailEndpoint, {
-                method: "POST",
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: formData.fullname,
-                    email: formData.email,
-                    message: `Đăng ký VPS mới:
-                    - Gói: ${formData.plan}
-                    - Giá: ${formData.price}
-                    - SĐT: ${formData.phone}
-                    - Địa chỉ: ${formData.address}
-                    - Phương thức: ${formData.paymentMethod}
-                    - Ghi chú: ${formData.notes}`
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert('Đăng ký thành công! Thông tin đã được gửi đến email của bạn. Chúng tôi sẽ liên hệ lại sớm.');
-                window.location.href = 'thank.html'; // Chuyển hướng đến trang cảm ơn
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại hoặc liên hệ hỗ trợ.');
-            });
-            
-            return false;
-        }
-    </script>
 </body>
 </html>
