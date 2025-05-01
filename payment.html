@@ -1,66 +1,83 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Thanh Toán VPS</title>
   <style>
-    body { font-family: Arial; background: #f9f9f9; padding: 2rem; }
+    body { font-family: Arial; background: #f1f1f1; padding: 2rem; }
     .form-container {
-      max-width: 400px; background: white; padding: 2rem;
-      margin: auto; border-radius: 8px; box-shadow: 0 0 10px #ccc;
+      max-width: 500px; margin: auto; background: white;
+      padding: 2rem; border-radius: 8px; box-shadow: 0 0 10px #ccc;
     }
-    h2 { text-align: center; margin-bottom: 1rem; }
+    h2 { text-align: center; }
     label { display: block; margin-top: 1rem; }
     input, select {
-      width: 100%; padding: 0.5rem; margin-top: 0.3rem;
-      border: 1px solid #ccc; border-radius: 5px;
+      width: 100%; padding: 0.5rem; border: 1px solid #ccc;
+      border-radius: 5px; margin-top: 0.3rem;
     }
     button {
       margin-top: 1.5rem; width: 100%; padding: 0.6rem;
-      background: #007bff; color: white; border: none; border-radius: 5px;
-      font-weight: bold; cursor: pointer;
+      background: #28a745; color: white; border: none;
+      border-radius: 5px; font-weight: bold; cursor: pointer;
     }
-    button:hover { background: #0056b3; }
+    button:hover { background: #218838; }
+    .bank-info {
+      background: #f0f8ff; padding: 1rem; margin-top: 1rem;
+      border: 1px dashed #007bff; display: none;
+    }
   </style>
 </head>
 <body>
 
   <div class="form-container">
     <h2>🧾 Thanh Toán VPS</h2>
-    <form onsubmit="submitForm(event)">
+    <form action="https://formsubmit.co/your-email@gmail.com" method="POST">
+      <!-- Replace above with your email -->
+      
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://yourdomain.github.io/vps-site/thanks.html">
+      
       <label>Họ và tên</label>
-      <input type="text" required>
+      <input type="text" name="Họ và tên" required>
 
       <label>Email</label>
-      <input type="email" required>
+      <input type="email" name="Email" required>
 
       <label>Số điện thoại</label>
-      <input type="tel" required>
+      <input type="tel" name="Số điện thoại" required>
 
       <label>Gói VPS</label>
-      <select id="goi-vps" required>
+      <select name="Gói VPS" id="goi-vps" required>
         <option value="">-- Chọn gói --</option>
-        <option>Gói Cơ Bản - 50.000đ</option>
-        <option>Gói Phổ Biến - 90.000đ</option>
-        <option>Gói Cao Cấp - 160.000đ</option>
+        <option value="Gói Cơ Bản">Gói Cơ Bản - 50.000đ</option>
+        <option value="Gói Phổ Biến">Gói Phổ Biến - 90.000đ</option>
+        <option value="Gói Cao Cấp">Gói Cao Cấp - 160.000đ</option>
       </select>
 
       <label>Hình thức thanh toán</label>
-      <select required>
+      <select name="Hình thức thanh toán" id="hinh-thuc" required onchange="toggleBankInfo()">
         <option value="">-- Chọn --</option>
-        <option>MOMO</option>
-        <option>Ngân hàng</option>
+        <option value="MOMO">MOMO</option>
+        <option value="Chuyển khoản Ngân hàng">Chuyển khoản Ngân hàng</option>
       </select>
 
-      <button type="submit">Xác Nhận Thanh Toán</button>
+      <div class="bank-info" id="bank-info">
+        <strong>💳 Thông tin chuyển khoản:</strong><br>
+        Ngân hàng: Vietcombank<br>
+        Số tài khoản: 0123456789<br>
+        Chủ tài khoản: NGUYEN VAN A<br>
+        Nội dung: Thanh toán VPS + [Họ tên bạn]
+      </div>
+
+      <button type="submit">Gửi Đơn & Nhận Thông Tin</button>
     </form>
   </div>
 
   <script>
-    // Lấy gói từ URL nếu có
-    const urlParams = new URLSearchParams(window.location.search);
-    const goi = urlParams.get('goi');
+    // Tự chọn gói nếu có trên URL
+    const params = new URLSearchParams(window.location.search);
+    const goi = params.get('goi');
     if (goi) {
       const select = document.getElementById('goi-vps');
       for (let option of select.options) {
@@ -71,9 +88,11 @@
       }
     }
 
-    function submitForm(e) {
-      e.preventDefault();
-      alert("✅ Đơn hàng đã được gửi. Chúng tôi sẽ liên hệ sớm!");
+    // Hiện thông tin ngân hàng nếu chọn đúng
+    function toggleBankInfo() {
+      const hinhThuc = document.getElementById('hinh-thuc').value;
+      const bankInfo = document.getElementById('bank-info');
+      bankInfo.style.display = hinhThuc.includes("Ngân hàng") ? 'block' : 'none';
     }
   </script>
 
