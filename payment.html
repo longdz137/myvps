@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thanh Toán VPS - Công Ty ABC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background-color: #f7f9fc;
+      color: #333;
+    }
+
+    header {
+      background-color: #0d6efd;
+      color: #fff;
+      padding: 20px 40px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #0d6efd;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 600;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      margin-top: 30px;
+      width: 100%;
+      padding: 14px;
+      background-color: #198754;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #157347;
+    }
+
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      font-size: 14px;
+      color: #888;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 20px;
+        padding: 20px;
+      }
+    }
+
+    .bank-info {
+      background: #e9f5ff;
+      padding: 15px;
+      margin-top: 15px;
+      border-left: 4px solid #0d6efd;
+      display: none;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>THANH TOÁN VPS - CÔNG TY ABC</h1>
+</header>
+
+<div class="container">
+  <h2>Thông Tin Đơn Hàng</h2>
+  <p><strong>Họ và tên:</strong> [Tên người dùng]</p>
+  <p><strong>Email:</strong> [Email người dùng]</p>
+  <p><strong>Số điện thoại:</strong> [SĐT người dùng]</p>
+  <p><strong>Gói VPS:</strong> [Gói VPS người dùng]</p>
+
+  <h3>Chọn Hình Thức Thanh Toán</h3>
+  <form action="https://formsubmit.co/longpubg02ml1@gmail.com" method="POST">
+    <!-- Cấu hình gửi email -->
+    <input type="hidden" name="_subject" value="🔔 Đơn hàng mới đang chờ thanh toán!" />
+    <input type="hidden" name="_template" value="box" />
+    <input type="hidden" name="_captcha" value="false" />
+    <input type="hidden" name="_next" value="https://longdz137.github.io/myvps/thank.html" />
+    
+    <label for="payment">Chọn phương thức thanh toán</label>
+    <select id="payment" name="Thanh toán" onchange="toggleBankInfo()" required>
+      <option value="">-- Chọn --</option>
+      <option value="MOMO">Ví MOMO</option>
+      <option value="Chuyển khoản">Chuyển khoản Ngân hàng</option>
+    </select>
+
+    <div class="bank-info" id="bank-info">
+      <strong>Thông tin chuyển khoản:</strong><br />
+      Ngân hàng: Vietcombank<br />
+      Số tài khoản: 0123456789<br />
+      Chủ tài khoản: NGUYEN VAN A<br />
+      Nội dung: [Họ Tên] + Mua VPS
+    </div>
+
+    <button type="submit">🔐 Xác nhận thanh toán</button>
+  </form>
+</div>
+
+<footer>
+  © 2025 Công Ty ABC. All rights reserved.
+</footer>
+
+<script>
+  function toggleBankInfo() {
+    const method = document.getElementById('payment').value;
+    document.getElementById('bank-info').style.display = method === "Chuyển khoản" ? "block" : "none";
+  }
+</script>
+
+</body>
+</html>
