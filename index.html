@@ -3,133 +3,348 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dịch vụ VPS Chất lượng Cao</title>
+    <title>SkyVPS - Máy chủ ảo chất lượng cao</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
             color: #333;
         }
+        
         header {
-            background: #0066cc;
+            background-color: #2c3e50;
             color: white;
             padding: 1rem 0;
-            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
+        
         .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        .vps-plans {
+        
+        .header-content {
             display: flex;
             justify-content: space-between;
-            margin: 2rem 0;
+            align-items: center;
         }
-        .plan {
-            border: 1px solid #ddd;
-            padding: 1rem;
-            width: 30%;
-            text-align: center;
-            border-radius: 5px;
-        }
-        .plan h3 {
-            color: #0066cc;
-        }
-        .price {
-            font-size: 1.5rem;
+        
+        .logo {
+            font-size: 1.8rem;
             font-weight: bold;
-            margin: 1rem 0;
         }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #3498db;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
         .btn {
             display: inline-block;
-            background: #0066cc;
+            background-color: #e74c3c;
             color: white;
-            padding: 0.5rem 1rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
             text-decoration: none;
-            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
         }
-        footer {
-            background: #333;
-            color: white;
+        
+        .btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .plans {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
             text-align: center;
-            padding: 1rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+        
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .plan-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .plan-card.popular {
+            border: 2px solid #3498db;
+            position: relative;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background-color: #3498db;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .plan-name {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .plan-price {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: #e74c3c;
+        }
+        
+        .plan-price span {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .plan-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: #3498db;
+        }
+        
+        .copyright {
             margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Dịch vụ VPS Chuyên nghiệp</h1>
-            <p>Hiệu năng cao - Ổn định - Hỗ trợ 24/7</p>
+            <div class="header-content">
+                <div class="logo">SkyVPS</div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Trang chủ</a></li>
+                        <li><a href="#plans">Gói dịch vụ</a></li>
+                        <li><a href="#">Tính năng</a></li>
+                        <li><a href="#">Hỗ trợ</a></li>
+                        <li><a href="#">Đăng nhập</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
-
-    <div class="container">
-        <section class="intro">
-            <h2>VPS của chúng tôi</h2>
-            <p>Cung cấp giải pháp máy chủ ảo mạnh mẽ với hiệu năng vượt trội, bảo mật tối đa và hỗ trợ kỹ thuật 24/7.</p>
-        </section>
-
-        <section class="vps-plans">
-            <div class="plan">
-                <h3>VPS Cơ bản</h3>
-                <ul>
-                    <li>1 CPU Core</li>
-                    <li>2GB RAM</li>
-                    <li>40GB SSD</li>
-                    <li>Băng thông 1TB</li>
-                    <li>1 IPv4</li>
-                </ul>
-                <div class="price">199,000đ/tháng</div>
-                <a href="#" class="btn">Đăng ký ngay</a>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Máy chủ ảo hiệu năng cao</h1>
+            <p>Sở hữu server đám mây với ổ cứng SSD, mạng tốc độ cao và hỗ trợ 24/7. Hoàn hảo cho nhà phát triển, doanh nghiệp và tập đoàn.</p>
+            <a href="#plans" class="btn">Xem gói dịch vụ</a>
+        </div>
+    </section>
+    
+    <section id="plans" class="plans">
+        <div class="container">
+            <div class="section-title">
+                <h2>Chọn Gói VPS Của Bạn</h2>
+                <p>Tất cả các gói đều bao gồm hỗ trợ 24/7 và cam kết uptime 99.9%</p>
             </div>
-
-            <div class="plan">
-                <h3>VPS Tiêu chuẩn</h3>
-                <ul>
-                    <li>2 CPU Core</li>
-                    <li>4GB RAM</li>
-                    <li>80GB SSD</li>
-                    <li>Băng thông 2TB</li>
-                    <li>1 IPv4</li>
-                </ul>
-                <div class="price">399,000đ/tháng</div>
-                <a href="#" class="btn">Đăng ký ngay</a>
+            
+            <div class="plans-grid">
+                <div class="plan-card">
+                    <h3 class="plan-name">Cơ bản</h3>
+                    <div class="plan-price">199.000đ<span>/tháng</span></div>
+                    <ul class="plan-features">
+                        <li>1 vCPU Core</li>
+                        <li>1GB RAM</li>
+                        <li>25GB SSD</li>
+                        <li>1TB Băng thông</li>
+                        <li>1 Địa chỉ IPv4</li>
+                        <li>Hỗ trợ 24/7</li>
+                    </ul>
+                    <a href="#" class="btn">Đăng ký ngay</a>
+                </div>
+                
+                <div class="plan-card popular">
+                    <div class="popular-badge">Phổ biến</div>
+                    <h3 class="plan-name">Doanh nghiệp</h3>
+                    <div class="plan-price">699.000đ<span>/tháng</span></div>
+                    <ul class="plan-features">
+                        <li>4 vCPU Cores</li>
+                        <li>8GB RAM</li>
+                        <li>100GB SSD</li>
+                        <li>5TB Băng thông</li>
+                        <li>1 Địa chỉ IPv4</li>
+                        <li>Hỗ trợ ưu tiên 24/7</li>
+                    </ul>
+                    <a href="#" class="btn">Đăng ký ngay</a>
+                </div>
+                
+                <div class="plan-card">
+                    <h3 class="plan-name">Cao cấp</h3>
+                    <div class="plan-price">1.999.000đ<span>/tháng</span></div>
+                    <ul class="plan-features">
+                        <li>8 vCPU Cores</li>
+                        <li>16GB RAM</li>
+                        <li>250GB SSD</li>
+                        <li>10TB Băng thông</li>
+                        <li>2 Địa chỉ IPv4</li>
+                        <li>Hỗ trợ cao cấp 24/7</li>
+                    </ul>
+                    <a href="#" class="btn">Đăng ký ngay</a>
+                </div>
             </div>
-
-            <div class="plan">
-                <h3>VPS Cao cấp</h3>
-                <ul>
-                    <li>4 CPU Core</li>
-                    <li>8GB RAM</li>
-                    <li>160GB SSD</li>
-                    <li>Băng thông không giới hạn</li>
-                    <li>2 IPv4</li>
-                </ul>
-                <div class="price">799,000đ/tháng</div>
-                <a href="#" class="btn">Đăng ký ngay</a>
-            </div>
-        </section>
-
-        <section class="features">
-            <h2>Tính năng nổi bật</h2>
-            <ul>
-                <li>100% ổ cứng SSD Enterprise</li>
-                <li>Công nghệ ảo hóa KVM/Xen</li>
-                <li>Quản trị VPS dễ dàng với Control Panel</li>
-                <li>Sao lưu dữ liệu định kỳ</li>
-                <li>Hỗ trợ cài đặt nhiều hệ điều hành</li>
-            </ul>
-        </section>
-    </div>
-
+        </div>
+    </section>
+    
     <footer>
         <div class="container">
-            <p>© 2023 Dịch vụ VPS. Liên hệ: support@vpscuaban.com - Hotline: 1900 1234</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SkyVPS</h3>
+                    <p>Cung cấp máy chủ đám mây hiệu năng cao từ năm 2015. Được tin dùng bởi hàng ngàn khách hàng trên toàn cầu.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="#">Trang chủ</a></li>
+                        <li><a href="#plans">Gói dịch vụ</a></li>
+                        <li><a href="#">Tính năng</a></li>
+                        <li><a href="#">Hỗ trợ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Hỗ trợ</h3>
+                    <ul>
+                        <li><a href="#">Kiến thức cơ bản</a></li>
+                        <li><a href="#">Gửi yêu cầu</a></li>
+                        <li><a href="#">Chat trực tuyến</a></li>
+                        <li><a href="#">Tình trạng hệ thống</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li>Email: support@skyvps.vn</li>
+                        <li>Điện thoại: 1900 1234</li>
+                        <li>Địa chỉ: 123 Đường Cloud, TP.HCM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 SkyVPS. Bảo lưu mọi quyền.</p>
+            </div>
         </div>
     </footer>
 </body>
