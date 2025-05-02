@@ -133,6 +133,12 @@
         
         .payment-method-info.active {
             display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .payment-method-info h3 {
@@ -384,7 +390,7 @@
         <div class="header-container">
             <div class="logo">
                 <img src="https://via.placeholder.com/40x40" alt="Logo công ty">
-                <div class="logo-text">Công Ty <span>ABC</span></div>
+                <div class="logo-text">Công Ty <span>Cổ Phần Công Nghệ Sky Vps</span></div>
             </div>
         </div>
     </header>
@@ -425,8 +431,8 @@
         <!-- Payment Form -->
         <div class="payment-form">
             <h2>Thông Tin Thanh Toán</h2>
-            <form action="https://formsubmit.co/longpubg02ml1@gmail.com" method="POST">
-                <input type="hidden" name="_subject" value="[ABC TECH] Đơn đặt hàng VPS mới - #<span id='form-order-id'></span>">
+            <form id="paymentForm" action="https://formsubmit.co/longpubg02ml1@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="[ THÔNG BÁO LÚA VỀ ] Đơn đặt hàng VPS mới - #<span id='form-order-id'></span>">
                 <input type="hidden" name="_template" value="table">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="order_id" id="form-order-id-input">
@@ -507,7 +513,7 @@
                             </div>
                             <div class="detail-row">
                                 <strong>Chi nhánh:</strong>
-                                <span>Mê Linh</span>
+                                <span>MÊ LINH</span>
                             </div>
                             <button class="copy-btn" onclick="copyToClipboard('6868307207')">Sao chép số TK</button>
                         </div>
@@ -519,7 +525,7 @@
                             </h4>
                             <div class="detail-row">
                                 <strong>Số tài khoản:</strong>
-                                <span>027372</span>
+                                <span>0273723</span>
                             </div>
                             <div class="detail-row">
                                 <strong>Chủ tài khoản:</strong>
@@ -527,7 +533,7 @@
                             </div>
                             <div class="detail-row">
                                 <strong>Chi nhánh:</strong>
-                                <span>Đống Đa</span>
+                                <span>ĐỐNG ĐA</span>
                             </div>
                             <button class="copy-btn" onclick="copyToClipboard('027372')">Sao chép số TK</button>
                         </div>
@@ -598,7 +604,7 @@
                 
                 <div class="important-notice">
                     <strong>Lưu ý quan trọng:</strong>
-                    <p>Sau khi thanh toán, vui lòng chụp hình biên lai và gửi qua email <strong>payment@abctech.vn</strong> hoặc gửi tin nhắn đến số điện thoại <strong>1900 1234</strong> để chúng tôi xác nhận thanh toán.</p>
+                    <p>Sau khi thanh toán, vui lòng chụp hình biên lai và gửi qua email <strong>longngvanmmo@gmail.com</strong> hoặc gửi tin nhắn đến số điện thoại <strong>033.406.3029</strong> để chúng tôi xác nhận thanh toán.</p>
                 </div>
                 
                 <div class="form-group">
@@ -606,9 +612,9 @@
                     <textarea id="notes" name="notes" placeholder="Yêu cầu thêm..."></textarea>
                 </div>
                 
-                <input type="hidden" name="_next" value="thank-you.html?order_id=">
+                <input type="hidden" name="_next" id="next-page" value="">
                 
-                <button type="submit" class="submit-btn">
+                <button type="submit" class="submit-btn" id="submit-button">
                     Hoàn Tất Đặt Hàng
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
@@ -621,11 +627,11 @@
     <!-- Footer -->
     <footer>
         <div class="footer-container">
-            <p>CÔNG TY CỔ PHẦN CÔNG NGHỆ ABC</p>
-            <p>Địa chỉ: Số 123, Đường ABC, Quận XYZ, TP. Hồ Chí Minh</p>
-            <p>Email: support@abctech.vn - Hotline: 1900 1234</p>
+            <p>CÔNG TY CỔ PHẦN CÔNG NGHỆ SKY VPS</p>
+            <p>Địa chỉ: Yên Nhân, Tiền Phong, Mê Linh, TP. Hà Nội</p>
+            <p>Email: longngvanmmo@gmail.com - Hotline: 033.406.3029</p>
             <div class="copyright">
-                <p>© 2023 Công Ty Cổ Phần Công Nghệ ABC. Mọi quyền được bảo lưu.</p>
+                <p>© 2023 Công Ty Cổ Phần Công Nghệ Sky Vps. Mọi quyền được bảo lưu.</p>
             </div>
         </div>
     </footer>
@@ -646,7 +652,10 @@
         document.getElementById('order-id').textContent = orderId;
         document.getElementById('form-order-id-input').value = orderId;
         document.getElementById('form-order-id').textContent = orderId;
-        document.querySelector('input[name="_next"]').value += orderId;
+        
+        // Cập nhật URL chuyển hướng
+        const nextPageUrl = `thank-you.html?order_id=${orderId}`;
+        document.getElementById('next-page').value = nextPageUrl;
         
         // Lấy thông tin từ URL
         const urlParams = new URLSearchParams(window.location.search);
@@ -684,12 +693,10 @@
                 });
                 
                 // Hiển thị thông tin thanh toán tương ứng
-                if (methodValue === 'bank') {
-                    document.getElementById('bank-info').classList.add('active');
-                } else if (methodValue === 'momo') {
-                    document.getElementById('momo-info').classList.add('active');
-                } else if (methodValue === 'zalopay') {
-                    document.getElementById('zalopay-info').classList.add('active');
+                const paymentInfoId = `${methodValue}-info`;
+                const paymentInfoElement = document.getElementById(paymentInfoId);
+                if (paymentInfoElement) {
+                    paymentInfoElement.classList.add('active');
                 }
             });
         });
@@ -751,6 +758,26 @@
                 console.error('Lỗi khi sao chép: ', err);
             });
         }
+        
+        // Xử lý submit form
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            // Thêm hiệu ứng loading cho nút submit
+            const submitBtn = document.getElementById('submit-button');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Đang xử lý... <div class="spinner"></div>';
+            
+            // Nếu là thanh toán qua Momo hoặc ZaloPay, chuyển hướng ngay
+            const paymentMethod = document.getElementById('payment-method').value;
+            if (paymentMethod === 'momo' || paymentMethod === 'zalopay') {
+                e.preventDefault(); // Ngăn form submit bình thường
+                
+                // Giả lập gửi form (thực tế bạn có thể gọi API thanh toán ở đây)
+                setTimeout(() => {
+                    window.location.href = nextPageUrl;
+                }, 1500);
+            }
+            // Nếu là chuyển khoản ngân hàng, form sẽ submit bình thường
+        });
         
         // Khởi tạo nội dung thanh toán
         updatePaymentContents();
