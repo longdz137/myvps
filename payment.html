@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thanh Toán VPS | Công Ty Công Nghệ Sky Vps</title>
+    <title>Thanh Toán VPS | Công Ty Công Nghệ ABC</title>
     <style>
         /* Reset CSS */
         * {
@@ -199,37 +199,6 @@
             background: #3182ce;
         }
         
-        /* Credit Card Form */
-        .credit-card-form {
-            display: none;
-            margin-top: 20px;
-            padding: 25px;
-            background: #f0f9ff;
-            border-radius: 10px;
-            border: 1px solid #bee3f8;
-        }
-        
-        .credit-card-form.active {
-            display: block;
-        }
-        
-        .card-icons {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        
-        .card-icons img {
-            height: 30px;
-            width: auto;
-        }
-        
-        .card-input-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
         /* Payment Form */
         .payment-form {
             background: white;
@@ -406,10 +375,6 @@
             .account-details {
                 grid-template-columns: 1fr;
             }
-            
-            .card-input-group {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -460,7 +425,7 @@
         <!-- Payment Form -->
         <div class="payment-form">
             <h2>Thông Tin Thanh Toán</h2>
-            <form action="https://formsubmit.co/longpubg02ml1@gmail.com" method="POST">
+            <form action="https://formsubmit.co/your-email@example.com" method="POST">
                 <input type="hidden" name="_subject" value="[ABC TECH] Đơn đặt hàng VPS mới - #<span id='form-order-id'></span>">
                 <input type="hidden" name="_template" value="table">
                 <input type="hidden" name="_captcha" value="false">
@@ -469,7 +434,7 @@
                 <input type="hidden" name="price" id="form-price">
                 <input type="hidden" name="duration" id="form-duration">
                 <input type="hidden" name="total" id="form-total">
-                <input type="hidden" name="payment_method" id="form-payment-method">
+                <input type="hidden" name="payment_method" id="form-payment-method" value="bank">
                 
                 <div class="form-group">
                     <label for="name">Họ và tên</label>
@@ -503,12 +468,7 @@
                             <img src="https://cdn-icons-png.flaticon.com/512/196/196566.png" alt="Bank">
                             <div>Chuyển khoản</div>
                         </div>
-                        <div class="payment-method" data-method="visa">
-                            <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Visa">
-                            <div>Thẻ Visa/Master</div>
-                        </div>
                     </div>
-                    <input type="hidden" id="payment-method" name="payment_method" value="bank">
                 </div>
                 
                 <!-- Bank Transfer Info -->
@@ -605,42 +565,6 @@
                     </div>
                 </div>
                 
-                <!-- Credit Card Form -->
-                <div class="credit-card-form" id="visa-info">
-                    <h3>
-                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm11.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-2zm1 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm-1-3A1.5 1.5 0 0 0 10 5.5v1A1.5 1.5 0 0 0 11.5 8h2A1.5 1.5 0 0 0 15 6.5v-1A1.5 1.5 0 0 0 13.5 4h-2zM1 5.5A1.5 1.5 0 0 1 2.5 4h3A1.5 1.5 0 0 1 7 5.5v1A1.5 1.5 0 0 1 5.5 8h-3A1.5 1.5 0 0 1 1 6.5v-1zM2.5 7a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-3z"/>
-                        </svg>
-                        Thanh Toán Bằng Thẻ Visa/Master
-                    </h3>
-                    
-                    <div class="card-icons">
-                        <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Visa">
-                        <img src="https://cdn-icons-png.flaticon.com/512/196/196561.png" alt="Mastercard">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="card-number">Số thẻ</label>
-                        <input type="text" id="card-number" name="card_number" placeholder="1234 5678 9012 3456" maxlength="19" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="card-name">Tên chủ thẻ</label>
-                        <input type="text" id="card-name" name="card_name" placeholder="NGUYEN VAN A" required>
-                    </div>
-                    
-                    <div class="card-input-group">
-                        <div class="form-group">
-                            <label for="card-expiry">Ngày hết hạn (MM/YY)</label>
-                            <input type="text" id="card-expiry" name="card_expiry" placeholder="MM/YY" maxlength="5" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="card-cvv">Mã CVV</label>
-                            <input type="text" id="card-cvv" name="card_cvv" placeholder="123" maxlength="3" required>
-                        </div>
-                    </div>
-                </div>
-                
                 <div class="important-notice">
                     <strong>Lưu ý quan trọng:</strong>
                     <p>Sau khi thanh toán, vui lòng chụp hình biên lai và gửi qua email <strong>payment@abctech.vn</strong> hoặc gửi tin nhắn đến số điện thoại <strong>1900 1234</strong> để chúng tôi xác nhận thanh toán.</p>
@@ -712,55 +636,6 @@
         document.getElementById('duration-select').addEventListener('change', function() {
             document.getElementById('duration').textContent = this.value;
             updateTotalPrice();
-        });
-        
-        // Xử lý chọn phương thức thanh toán
-        document.querySelectorAll('.payment-method').forEach(method => {
-            method.addEventListener('click', function() {
-                // Xóa selected khỏi tất cả các phương thức
-                document.querySelectorAll('.payment-method').forEach(m => {
-                    m.classList.remove('selected');
-                });
-                
-                // Thêm selected vào phương thức được chọn
-                this.classList.add('selected');
-                
-                const methodValue = this.dataset.method;
-                document.getElementById('payment-method').value = methodValue;
-                document.getElementById('form-payment-method').value = methodValue;
-                
-                // Ẩn tất cả các form thanh toán
-                document.querySelectorAll('.payment-method-info, .credit-card-form').forEach(form => {
-                    form.classList.remove('active');
-                });
-                
-                // Hiển thị form thanh toán tương ứng
-                if (methodValue === 'bank') {
-                    document.getElementById('bank-info').classList.add('active');
-                } else if (methodValue === 'visa') {
-                    document.getElementById('visa-info').classList.add('active');
-                }
-                
-                console.log('Đã chọn phương thức thanh toán:', methodValue);
-            });
-        });
-
-        // Format số thẻ khi nhập
-        document.getElementById('card-number').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\s+/g, '');
-            if (value.length > 0) {
-                value = value.match(new RegExp('.{1,4}', 'g')).join(' ');
-            }
-            e.target.value = value;
-        });
-
-        // Format ngày hết hạn khi nhập
-        document.getElementById('card-expiry').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length >= 2) {
-                value = value.substring(0, 2) + '/' + value.substring(2, 4);
-            }
-            e.target.value = value;
         });
         
         // Cập nhật nội dung thanh toán khi thay đổi thông tin
