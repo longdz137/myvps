@@ -3,96 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dịch Vụ VPS Chất Lượng Cao</title>
+    <title>Bán VPS Chất Lượng Cao - Giá Rẻ</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Include header -->
-    <div id="header"></div>
+    <header>
+        <div class="container">
+            <h1>Dịch Vụ VPS Chuyên Nghiệp</h1>
+            <p>Giải pháp lưu trữ mạnh mẽ cho doanh nghiệp của bạn</p>
+        </div>
+    </header>
 
-    <main class="container">
-        <section class="hero">
-            <h1>Dịch Vụ VPS Mạnh Mẽ</h1>
-            <p>Hiệu suất cao, ổn định, hỗ trợ 24/7</p>
-            <a href="#vps-plans" class="btn">Xem Gói Dịch Vụ</a>
-        </section>
-
-        <section id="vps-plans" class="pricing">
+    <section class="vps-plans">
+        <div class="container">
             <h2>Các Gói VPS</h2>
-            <div class="plans">
+            <div class="plans-container">
                 <div class="plan">
                     <h3>VPS Cơ Bản</h3>
-                    <div class="price">500,000đ<span>/tháng</span></div>
+                    <div class="price">499,000đ<span>/tháng</span></div>
                     <ul>
                         <li><i class="fas fa-check"></i> 2 CPU Cores</li>
                         <li><i class="fas fa-check"></i> 2GB RAM</li>
-                        <li><i class="fas fa-check"></i> 40GB SSD</li>
+                        <li><i class="fas fa-check"></i> 50GB SSD</li>
                         <li><i class="fas fa-check"></i> 2TB Bandwidth</li>
                         <li><i class="fas fa-check"></i> 1 IPv4</li>
                     </ul>
-                    <button class="btn select-plan" data-plan="VPS Cơ Bản">Chọn Gói</button>
+                    <button class="btn-select" data-plan="VPS Cơ Bản">Chọn Gói</button>
                 </div>
 
                 <div class="plan popular">
                     <div class="popular-badge">Phổ Biến</div>
                     <h3>VPS Nâng Cao</h3>
-                    <div class="price">900,000đ<span>/tháng</span></div>
+                    <div class="price">899,000đ<span>/tháng</span></div>
                     <ul>
                         <li><i class="fas fa-check"></i> 4 CPU Cores</li>
                         <li><i class="fas fa-check"></i> 4GB RAM</li>
-                        <li><i class="fas fa-check"></i> 80GB SSD</li>
+                        <li><i class="fas fa-check"></i> 100GB SSD</li>
                         <li><i class="fas fa-check"></i> 4TB Bandwidth</li>
                         <li><i class="fas fa-check"></i> 1 IPv4</li>
                     </ul>
-                    <button class="btn select-plan" data-plan="VPS Nâng Cao">Chọn Gói</button>
+                    <button class="btn-select" data-plan="VPS Nâng Cao">Chọn Gói</button>
                 </div>
 
                 <div class="plan">
                     <h3>VPS Doanh Nghiệp</h3>
-                    <div class="price">1,500,000đ<span>/tháng</span></div>
+                    <div class="price">1,499,000đ<span>/tháng</span></div>
                     <ul>
                         <li><i class="fas fa-check"></i> 8 CPU Cores</li>
                         <li><i class="fas fa-check"></i> 8GB RAM</li>
-                        <li><i class="fas fa-check"></i> 160GB SSD</li>
+                        <li><i class="fas fa-check"></i> 200GB SSD</li>
                         <li><i class="fas fa-check"></i> 8TB Bandwidth</li>
                         <li><i class="fas fa-check"></i> 2 IPv4</li>
                     </ul>
-                    <button class="btn select-plan" data-plan="VPS Doanh Nghiệp">Chọn Gói</button>
+                    <button class="btn-select" data-plan="VPS Doanh Nghiệp">Chọn Gói</button>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="order-form" class="order-form hidden">
+    <section class="order-form" id="orderForm">
+        <div class="container">
             <h2>Đặt Hàng VPS</h2>
-            <form id="vpsOrderForm" action="https://formsubmit.co/longpubg02ml1@gmail.com" method="POST">
+            <form action="https://formsubmit.co/your-email@example.com" method="POST" id="vpsOrderForm">
                 <input type="hidden" name="_subject" value="Đơn đặt hàng VPS mới">
                 <input type="hidden" name="_template" value="table">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="selected_plan" id="selectedPlanInput">
+                <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
+                <input type="hidden" name="selected_plan" id="selectedPlanInput" value="">
 
                 <div class="form-group">
-                    <label for="name">Họ và Tên</label>
-                    <input type="text" id="name" name="name" required>
+                    <label for="fullname">Họ và tên:</label>
+                    <input type="text" id="fullname" name="fullname" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Số Điện Thoại</label>
+                    <label for="phone">Số điện thoại:</label>
                     <input type="tel" id="phone" name="phone" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="plan">Gói VPS</label>
-                    <input type="text" id="plan" name="plan" readonly>
+                    <label for="plan">Gói VPS:</label>
+                    <select id="plan" name="plan" required>
+                        <option value="">-- Chọn gói VPS --</option>
+                        <option value="VPS Cơ Bản">VPS Cơ Bản - 499,000đ/tháng</option>
+                        <option value="VPS Nâng Cao">VPS Nâng Cao - 899,000đ/tháng</option>
+                        <option value="VPS Doanh Nghiệp">VPS Doanh Nghiệp - 1,499,000đ/tháng</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="duration">Thời Hạn</label>
+                    <label for="duration">Thời gian sử dụng:</label>
                     <select id="duration" name="duration" required>
                         <option value="1 tháng">1 tháng</option>
                         <option value="3 tháng">3 tháng (Giảm 5%)</option>
@@ -102,7 +108,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="payment">Phương Thức Thanh Toán</label>
+                    <label for="payment">Phương thức thanh toán:</label>
                     <select id="payment" name="payment" required>
                         <option value="Chuyển khoản ngân hàng">Chuyển khoản ngân hàng</option>
                         <option value="Ví điện tử (Momo, ZaloPay)">Ví điện tử (Momo, ZaloPay)</option>
@@ -111,61 +117,58 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="notes">Yêu Cầu Khác</label>
-                    <textarea id="notes" name="notes" rows="3"></textarea>
+                    <label for="notes">Ghi chú thêm:</label>
+                    <textarea id="notes" name="notes" rows="4"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="total">Tổng Cộng</label>
-                    <input type="text" id="total" name="total" readonly>
+                    <label>Tổng cộng:</label>
+                    <div class="total-amount" id="totalAmount">0 đ</div>
                 </div>
 
-                <button type="submit" class="btn">Đặt Hàng</button>
+                <button type="submit" class="btn-submit">Đặt Hàng Ngay</button>
             </form>
-        </section>
+        </div>
+    </section>
 
-        <section class="features">
-            <h2>Tại Sao Chọn Chúng Tôi</h2>
-            <div class="feature-grid">
+    <section class="features">
+        <div class="container">
+            <h2>Tại Sao Chọn Chúng Tôi?</h2>
+            <div class="features-grid">
                 <div class="feature">
                     <i class="fas fa-server"></i>
-                    <h3>Hiệu Suất Cao</h3>
-                    <p>Server mạnh mẽ với 100% SSD, uptime 99.9%</p>
+                    <h3>Hiệu Năng Mạnh Mẽ</h3>
+                    <p>Server cấu hình cao, tốc độ xử lý nhanh chóng</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Bảo Mật Tối Ưu</h3>
+                    <p>Hệ thống firewall và bảo mật đa tầng</p>
                 </div>
                 <div class="feature">
                     <i class="fas fa-headset"></i>
                     <h3>Hỗ Trợ 24/7</h3>
-                    <p>Đội ngũ kỹ thuật hỗ trợ nhiệt tình mọi lúc</p>
+                    <p>Đội ngũ kỹ thuật hỗ trợ mọi lúc, mọi nơi</p>
                 </div>
                 <div class="feature">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>Bảo Mật</h3>
-                    <p>Hệ thống firewall và DDoS protection mạnh mẽ</p>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-rocket"></i>
-                    <h3>Triển Khai Nhanh</h3>
-                    <p>Cung cấp VPS ngay sau khi thanh toán</p>
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Uptime 99.9%</h3>
+                    <p>Đảm bảo thời gian hoạt động tối đa</p>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <!-- Include footer -->
-    <div id="footer"></div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Dịch Vụ VPS Chuyên Nghiệp. All rights reserved.</p>
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> support@vpsprovider.com</p>
+                <p><i class="fas fa-phone"></i> 1900 1234</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
-    <script>
-        // Load header and footer
-        document.addEventListener('DOMContentLoaded', function() {
-            fetch('includes/header.html')
-                .then(response => response.text())
-                .then(data => document.getElementById('header').innerHTML = data);
-            
-            fetch('includes/footer.html')
-                .then(response => response.text())
-                .then(data => document.getElementById('footer').innerHTML = data);
-        });
-    </script>
 </body>
 </html>
