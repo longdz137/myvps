@@ -1,97 +1,118 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Xử lý chọn gói VPS
-    const selectPlanButtons = document.querySelectorAll('.select-plan');
-    const orderForm = document.getElementById('order-form');
-    const planInput = document.getElementById('plan');
+    // Xử lý khi click nút chọn gói
+    const selectButtons = document.querySelectorAll('.btn-select');
+    const orderForm = document.getElementById('orderForm');
+    const planSelect = document.getElementById('plan');
     const selectedPlanInput = document.getElementById('selectedPlanInput');
-    const totalInput = document.getElementById('total');
-    const durationSelect = document.getElementById('duration');
     
-    // Bảng giá các gói
-    const planPrices = {
-        'VPS Cơ Bản': 500000,
-        'VPS Nâng Cao': 900000,
-        'VPS Doanh Nghiệp': 1500000
-    };
-    
-    // Xử lý khi nhấn nút chọn gói
-    selectPlanButtons.forEach(button => {
+    selectButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const planName = this.getAttribute('data-plan');
+            const plan = this.getAttribute('data-plan');
+            planSelect.value = plan;
+            selectedPlanInput.value = plan;
             
-            // Hiển thị form đặt hàng
-            orderForm.classList.remove('hidden');
-            
-            // Điền thông tin gói đã chọn
-            planInput.value = planName;
-            selectedPlanInput.value = planName;
-            
-            // Cuộn đến form
+            // Cuộn đến form đặt hàng
             orderForm.scrollIntoView({ behavior: 'smooth' });
             
-            // Tính toán tổng tiền
+            // Tính toán lại tổng tiền
             calculateTotal();
         });
     });
     
-    // Tính toán tổng tiền khi thay đổi thời hạn
+    // Tính toán tổng tiền khi thay đổi gói hoặc thời gian
+    const durationSelect = document.getElementById('duration');
+    planSelect.addEventListener('change', calculateTotal);
     durationSelect.addEventListener('change', calculateTotal);
     
-    // Hàm tính tổng tiền
     function calculateTotal() {
-        const selectedPlan = planInput.value;
+        const plan = planSelect.value;
         const duration = durationSelect.value;
-        let price = planPrices[selectedPlan];
+        
+        if (!plan) {
+            document.getElementById('totalAmount').textContent = '0 đ';
+            return;
+        }
+        
+        let basePrice = 0;
+        
+        // Xác định giá cơ bản theo gói
+        switch(plan) {
+            case 'VPS Cơ Bản':
+                basePrice = 499000;
+                break;
+            case 'VPS Nâng Cao':
+                basePrice = 899000;
+                break;
+            case 'VPS Doanh Nghiệp':
+                basePrice = 1499000;
+                break;
+        }
+        
+        // Xác định số tháng và tỷ lệ giảm giá
+        let months = 1;
         let discount = 0;
         
-        // Áp dụng giảm giá theo thời hạn
-        if (duration === '3 tháng') {
+        if (duration.includes('3 tháng')) {
+            months = 3;
             discount = 0.05;
-        } else if (duration === '6 tháng') {
+        } else if (duration.includes('6 tháng')) {
+            months = 6;
             discount = 0.1;
-        } else if (duration === '12 tháng') {
+        } else if (duration.includes('12 tháng')) {
+            months = 12;
             discount = 0.15;
         }
         
-        // Tính tổng tiền
-        let months = parseInt(duration);
-        if (isNaN(months)) months = 1;
-        
-        const total = price * months * (1 - discount);
+        // Tính toán tổng tiền
+        const total = basePrice * months * (1 - discount);
         
         // Hiển thị tổng tiền
-        totalInput.value = formatCurrency(total) + ' (' + duration + ')';
-    }
-    
-    // Hàm định dạng tiền tệ
-    function formatCurrency(amount) {
-        return new Intl.NumberFormat('vi-VN', { 
-            style: 'currency', 
-            currency: 'VND' 
-        }).format(amount);
+        document.getElementById('totalAmount').textContent = total.toLocaleString('vi-VN') + ' đ';
     }
     
     // Xử lý submit form
-    const orderFormElement = document.getElementById('vpsOrderForm');
-    orderFormElement.addEventListener('submit', function(e) {
+    const orderForm = document.getElementById('vpsOrderForm');
+    orderForm.addEventListener('submit', function(e) {
         e.preventDefault();
+        
+        // Kiểm tra các trường bắt buộc
+        const requiredFields = this.querySelectorAll('[required]');
+        let isValid = true;
+        
+        requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+                isValid = false;
+                field.style.borderColor = 'red';
+            } else {
+                field.style.borderColor = '#ddd';
+            }
+        });
+        
+        if (!isValid) {
+            alert('Vui lòng điền đầy đủ thông tin bắt buộc!');
+            return;
+        }
         
         // Gửi form bằng FormSubmit
         fetch(this.action, {
             method: 'POST',
             body: new FormData(this),
+            headers: {
+                'Accept': 'application/json'
+            }
         })
         .then(response => {
             if (response.ok) {
-                alert('Đơn đặt hàng của bạn đã được gửi thành công! Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.');
-                orderFormElement.reset();
-                orderForm.classList.add('hidden');
+                alert('Đơn đặt hàng của bạn đã được gửi thành công! Chúng tôi sẽ liên hệ với bạn sớm.');
+                orderForm.reset();
+                document.getElementById('totalAmount').textContent = '0 đ';
             } else {
-                throw new Error('Có lỗi xảy ra khi gửi đơn đặt hàng.');
+                throw new Error('Lỗi khi gửi form');
             }
         })
         .catch(error => {
-            alert(error.message);
+            alert('Có lỗi xảy ra khi gửi đơn đặt hàng. Vui lòng thử lại sau!');
+            console.error('Error:', error);
         });
     });
 });
