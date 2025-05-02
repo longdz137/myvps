@@ -133,48 +133,6 @@
             text-align: center;
         }
         
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-        
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            background: #27ae60;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            font-weight: bold;
-            transition: background 0.3s ease;
-        }
-        
-        .submit-btn:hover {
-            background: #219653;
-        }
-        
         /* Footer */
         footer {
             text-align: center;
@@ -215,7 +173,7 @@
                     <li>1 IPv4 Address</li>
                     <li>Hỗ trợ 24/7</li>
                 </ul>
-                <a href="#order" class="btn">Đặt Mua Ngay</a>
+                <a href="payment.html?plan=VPS Cơ Bản&price=499000" class="btn">Đặt Mua Ngay</a>
             </div>
             
             <div class="plan">
@@ -229,7 +187,7 @@
                     <li>1 IPv4 Address</li>
                     <li>Hỗ trợ 24/7</li>
                 </ul>
-                <a href="#order" class="btn">Đặt Mua Ngay</a>
+                <a href="payment.html?plan=VPS Nâng Cao&price=899000" class="btn">Đặt Mua Ngay</a>
             </div>
             
             <div class="plan">
@@ -243,62 +201,8 @@
                     <li>2 IPv4 Addresses</li>
                     <li>Hỗ trợ 24/7 VIP</li>
                 </ul>
-                <a href="#order" class="btn">Đặt Mua Ngay</a>
+                <a href="payment.html?plan=VPS Doanh Nghiệp&price=1499000" class="btn">Đặt Mua Ngay</a>
             </div>
-        </div>
-        
-        <div id="order" class="order-form">
-            <h2>Đơn Đặt Hàng VPS</h2>
-            <form action="https://formsubmit.co/your-email@example.com" method="POST">
-                <input type="hidden" name="_subject" value="Đơn đặt hàng VPS mới">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_captcha" value="false">
-                
-                <div class="form-group">
-                    <label for="name">Họ và tên</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone">Số điện thoại</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="plan">Gói VPS</label>
-                    <select id="plan" name="plan" required>
-                        <option value="">-- Chọn gói VPS --</option>
-                        <option value="VPS Cơ Bản - 499.000đ/tháng">VPS Cơ Bản - 499.000đ/tháng</option>
-                        <option value="VPS Nâng Cao - 899.000đ/tháng">VPS Nâng Cao - 899.000đ/tháng</option>
-                        <option value="VPS Doanh Nghiệp - 1.499.000đ/tháng">VPS Doanh Nghiệp - 1.499.000đ/tháng</option>
-                        <option value="Khác (Ghi rõ trong ghi chú)">Khác (Ghi rõ trong ghi chú)</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="duration">Thời gian thuê</label>
-                    <select id="duration" name="duration" required>
-                        <option value="1 tháng">1 tháng</option>
-                        <option value="3 tháng">3 tháng (Giảm 5%)</option>
-                        <option value="6 tháng">6 tháng (Giảm 10%)</option>
-                        <option value="12 tháng">12 tháng (Giảm 15%)</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="notes">Ghi chú yêu cầu thêm</label>
-                    <textarea id="notes" name="notes" placeholder="Yêu cầu cấu hình đặc biệt, hệ điều hành, hoặc bất kỳ yêu cầu nào khác..."></textarea>
-                </div>
-                
-                <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
-                
-                <button type="submit" class="submit-btn">Gửi Đơn Đặt Hàng</button>
-            </form>
         </div>
         
         <footer>
