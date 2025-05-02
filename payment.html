@@ -723,9 +723,9 @@
             const duration = document.getElementById('duration-select').value;
             let discount = 0;
             
-            if (duration.includes('3 tháng')) discount = 0;
-            else if (duration.includes('6 tháng')) discount = 0;
-            else if (duration.includes('12 tháng')) discount = 0;
+            if (duration.includes('3 tháng')) discount = 0.05;
+            else if (duration.includes('6 tháng')) discount = 0.1;
+            else if (duration.includes('12 tháng')) discount = 0.15;
             
             const basePrice = parseInt(price);
             const total = basePrice * (1 - discount) * getMonthCount(duration);
