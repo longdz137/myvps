@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dịch Vụ VPS Chất Lượng Cao</title>
+    <title>Dịch Vụ VPS Chuyên Nghiệp | Công Ty Công Nghệ ABC</title>
     <style>
         /* Reset CSS */
         * {
@@ -14,87 +15,328 @@
         }
         
         body {
-            background-color: #f5f5f5;
+            background-color: #f8fafc;
             color: #333;
             line-height: 1.6;
         }
         
+        /* Header & Navigation */
+        .company-header {
+            background-color: #1a365d;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .logo-text span {
+            color: #4299e1;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: #4299e1;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #4299e1;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Main Content */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
         
-        header {
-            background-color: #2c3e50;
+        .hero {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
             color: white;
-            padding: 20px 0;
+            padding: 60px 20px;
             text-align: center;
-            border-radius: 5px;
-            margin-bottom: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
         }
         
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            opacity: 0.2;
         }
         
-        .tagline {
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .hero p {
             font-size: 1.2rem;
-            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 25px;
+            position: relative;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #4299e1;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            position: relative;
+            border: 2px solid transparent;
+        }
+        
+        .cta-button:hover {
+            background: transparent;
+            border-color: #4299e1;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(66, 153, 225, 0.3);
+        }
+        
+        /* Services Menu */
+        .services-menu {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .services-menu h2 {
+            color: #2d3748;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .service-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s;
+            border-left: 4px solid #4299e1;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card h3 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .service-card p {
+            color: #4a5568;
+            margin-bottom: 15px;
+        }
+        
+        .service-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .service-link:hover {
+            text-decoration: underline;
+        }
+        
+        .service-link svg {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .service-link:hover svg {
+            transform: translateX(5px);
         }
         
         /* VPS Plans */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: #4299e1;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: #4a5568;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
         .plans {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px;
-            margin-bottom: 40px;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 60px;
         }
         
         .plan {
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
             flex: 1;
-            min-width: 250px;
-            transition: transform 0.3s ease;
+            min-width: 280px;
+            max-width: 350px;
+            transition: all 0.3s ease;
+            border-top: 5px solid #4299e1;
+            position: relative;
+            overflow: hidden;
         }
         
         .plan:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: #e53e3e;
+            color: white;
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .plan.popular {
+            border-top-color: #e53e3e;
         }
         
         .plan h3 {
-            color: #2c3e50;
+            color: #2d3748;
             font-size: 1.5rem;
             margin-bottom: 15px;
             text-align: center;
         }
         
         .price {
-            font-size: 2rem;
-            color: #e74c3c;
+            font-size: 2.2rem;
+            color: #2d3748;
             text-align: center;
-            margin: 15px 0;
+            margin: 20px 0;
             font-weight: bold;
         }
         
         .price span {
             font-size: 1rem;
-            color: #7f8c8d;
+            color: #718096;
+            font-weight: normal;
         }
         
         .features {
             list-style: none;
-            margin: 20px 0;
+            margin: 25px 0;
         }
         
         .features li {
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+            border-bottom: 1px solid #edf2f7;
+            display: flex;
+            align-items: center;
+        }
+        
+        .features li::before {
+            content: '✓';
+            color: #48bb78;
+            margin-right: 10px;
+            font-weight: bold;
         }
         
         .features li:last-child {
@@ -103,112 +345,326 @@
         
         .btn {
             display: block;
-            background: #3498db;
+            background: #4299e1;
             color: white;
             text-align: center;
             padding: 12px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
             margin-top: 20px;
+            border: 2px solid transparent;
         }
         
         .btn:hover {
-            background: #2980b9;
-        }
-        
-        /* Order Form */
-        .order-form {
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            margin-top: 40px;
-        }
-        
-        .order-form h2 {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            text-align: center;
+            color: #4299e1;
+            border-color: #4299e1;
         }
         
         /* Footer */
         footer {
+            background: #1a202c;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+        
+        .footer-column h3 {
+            color: #4299e1;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: #4299e1;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #cbd5e0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #4299e1;
+        }
+        
+        .contact-info {
+            color: #cbd5e0;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info svg {
+            margin-right: 10px;
+            color: #4299e1;
+        }
+        
+        .copyright {
             text-align: center;
-            margin-top: 50px;
-            padding: 20px;
-            color: #7f8c8d;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid #2d3748;
+            color: #718096;
             font-size: 0.9rem;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
             .plans {
                 flex-direction: column;
+                align-items: center;
             }
             
             .plan {
                 width: 100%;
+                max-width: 100%;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header with Navigation -->
+    <header class="company-header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="https://via.placeholder.com/40x40" alt="Logo công ty">
+                <div class="logo-text">Công Ty <span>ABC</span></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Trang Chủ</a></li>
+                    <li><a href="#">Giới Thiệu</a></li>
+                    <li><a href="#">Dịch Vụ</a></li>
+                    <li><a href="#">Khách Hàng</a></li>
+                    <li><a href="#">Liên Hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
     <div class="container">
-        <header>
-            <h1>Dịch Vụ VPS Chất Lượng Cao</h1>
-            <p class="tagline">Giải pháp lưu trữ mạnh mẽ cho doanh nghiệp của bạn</p>
-        </header>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Giải Pháp VPS Chuyên Nghiệp</h1>
+            <p>Cung cấp dịch vụ VPS chất lượng cao với hiệu năng mạnh mẽ, bảo mật tuyệt đối và hỗ trợ 24/7</p>
+            <a href="#vps-plans" class="cta-button">Xem Gói Dịch Vụ</a>
+        </section>
         
-        <div class="plans">
-            <div class="plan">
-                <h3>VPS Mini Cloud</h3>
-                <div class="price">55.000đ <span>/tháng</span></div>
-                <ul class="features">
-                    <li>1 CPU Cores</li>
-                    <li>2GB RAM</li>
-                    <li>20GB SSD Storage</li>
-                    <li>1Gbps Bandwidth</li>
-                    <li>1 IPv4 Address</li>
-                    <li>Hỗ trợ 24/7</li>
-                </ul>
-                <a href="payment.html?plan=VPS Mini Cloud&price=50000" class="btn">Đặt Mua Ngay</a>
+        <!-- Services Menu -->
+        <section class="services-menu">
+            <h2>Dịch Vụ Của Chúng Tôi</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Cloud VPS</h3>
+                    <p>Giải pháp lưu trữ đám mây hiệu suất cao với khả năng mở rộng linh hoạt</p>
+                    <a href="#" class="service-link">
+                        Xem chi tiết
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Dedicated Server</h3>
+                    <p>Máy chủ vật lý riêng biệt với hiệu năng tối đa cho doanh nghiệp lớn</p>
+                    <a href="#" class="service-link">
+                        Xem chi tiết
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Web Hosting</h3>
+                    <p>Dịch vụ hosting tốc độ cao với uptime 99.9% và hỗ trợ kỹ thuật 24/7</p>
+                    <a href="#" class="service-link">
+                        Xem chi tiết
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Bảo Mật & SSL</h3>
+                    <p>Giải pháp bảo mật toàn diện và chứng chỉ SSL cho website của bạn</p>
+                    <a href="#" class="service-link">
+                        Xem chi tiết
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- VPS Plans -->
+        <section id="vps-plans">
+            <div class="section-title">
+                <h2>Các Gói VPS</h2>
+                <p>Lựa chọn gói dịch vụ phù hợp với nhu cầu của bạn</p>
             </div>
             
-            <div class="plan">
-                <h3>VPS PLATIUM SALE</h3>
-                <div class="price">180.000đ <span>/tháng</span></div>
-                <ul class="features">
-                    <li>4 CPU Cores</li>
-                    <li>6GB RAM</li>
-                    <li>40GB SSD Storage</li>
-                    <li>1Gbps Bandwidth</li>
-                    <li>1 IPv4 Address</li>
-                    <li>Hỗ trợ 24/7</li>
-                </ul>
-                <a href="payment.html?plan=VPS PLATIUM SALE&price=180000" class="btn">Đặt Mua Ngay</a>
+            <div class="plans">
+                <div class="plan">
+                    <h3>VPS Cơ Bản</h3>
+                    <div class="price">499.000đ <span>/tháng</span></div>
+                    <ul class="features">
+                        <li>2 CPU Cores</li>
+                        <li>2GB RAM</li>
+                        <li>50GB SSD Storage</li>
+                        <li>1Gbps Bandwidth</li>
+                        <li>1 IPv4 Address</li>
+                        <li>Hỗ trợ 24/7</li>
+                        <li>Quản trị cơ bản</li>
+                    </ul>
+                    <a href="payment.html?plan=VPS Cơ Bản&price=499000" class="btn">Đặt Mua Ngay</a>
+                </div>
+                
+                <div class="plan popular">
+                    <div class="popular-badge">Phổ biến</div>
+                    <h3>VPS Nâng Cao</h3>
+                    <div class="price">899.000đ <span>/tháng</span></div>
+                    <ul class="features">
+                        <li>4 CPU Cores</li>
+                        <li>4GB RAM</li>
+                        <li>100GB SSD Storage</li>
+                        <li>1Gbps Bandwidth</li>
+                        <li>1 IPv4 Address</li>
+                        <li>Hỗ trợ 24/7</li>
+                        <li>Quản trị nâng cao</li>
+                    </ul>
+                    <a href="payment.html?plan=VPS Nâng Cao&price=899000" class="btn">Đặt Mua Ngay</a>
+                </div>
+                
+                <div class="plan">
+                    <h3>VPS Doanh Nghiệp</h3>
+                    <div class="price">1.499.000đ <span>/tháng</span></div>
+                    <ul class="features">
+                        <li>8 CPU Cores</li>
+                        <li>8GB RAM</li>
+                        <li>200GB SSD Storage</li>
+                        <li>1Gbps Bandwidth</li>
+                        <li>2 IPv4 Addresses</li>
+                        <li>Hỗ trợ 24/7 VIP</li>
+                        <li>Quản trị chuyên nghiệp</li>
+                    </ul>
+                    <a href="payment.html?plan=VPS Doanh Nghiệp&price=1499000" class="btn">Đặt Mua Ngay</a>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Công Ty ABC</h3>
+                <p>Đơn vị cung cấp dịch vụ VPS và hosting hàng đầu Việt Nam với hơn 10 năm kinh nghiệm.</p>
             </div>
             
-            <div class="plan">
-                <h3>VPS PLATIUM ULTIMATE</h3>
-                <div class="price">1.199.000đ <span>/tháng</span></div>
-                <ul class="features">
-                    <li>18 CPU Cores</li>
-                    <li>42GB RAM</li>
-                    <li>240GB SSD Storage</li>
-                    <li>1Gbps Bandwidth</li>
-                    <li>1 IPv4 Addresses</li>
-                    <li>Hỗ trợ 24/7 VIP</li>
+            <div class="footer-column">
+                <h3>Dịch Vụ</h3>
+                <ul>
+                    <li><a href="#">Cloud VPS</a></li>
+                    <li><a href="#">Dedicated Server</a></li>
+                    <li><a href="#">Web Hosting</a></li>
+                    <li><a href="#">Tên Miền</a></li>
+                    <li><a href="#">Bảo Mật</a></li>
                 </ul>
-                <a href="payment.html?plan=VPS PLATIUM ULTIMATE&price=1199000" class="btn">Đặt Mua Ngay</a>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Hỗ Trợ</h3>
+                <ul>
+                    <li><a href="#">Câu hỏi thường gặp</a></li>
+                    <li><a href="#">Hướng dẫn sử dụng</a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                    <li><a href="#">Điều khoản dịch vụ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Liên Hệ</h3>
+                <div class="contact-info">
+                    <p>
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                        Yên Nhân, Tiền Phong, Mê Linh, TP. Hà Nội
+                    </p>
+                    <p>
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                        </svg>
+                        033.406.3029
+                    </p>
+                    <p>
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+                        </svg>
+                        longngvanmmo@gmail.com
+                    </p>
+                </div>
             </div>
         </div>
         
-        <footer>
-            <p>© 2023 Dịch Vụ VPS Chất Lượng Cao. Mọi quyền được bảo lưu.</p>
-            <p>Hỗ trợ khách hàng: longngvanmmo@gmail.com - Hotline: 033.406.3029</p>
-        </footer>
-    </div>
+        <div class="copyright">
+            <p>© 2023 Công Ty Cổ Phần Công Nghệ Sky Vps. Mọi quyền được bảo lưu.</p>
+        </div>
+    </footer>
 </body>
 </html>
