@@ -121,8 +121,9 @@
             margin-bottom: 15px;
         }
         
-        /* Bank Account Info */
-        .bank-info {
+        /* Payment Method Info */
+        .payment-method-info {
+            display: none;
             background: #f0f9ff;
             border-radius: 10px;
             padding: 25px;
@@ -130,7 +131,11 @@
             border: 1px solid #bee3f8;
         }
         
-        .bank-info h3 {
+        .payment-method-info.active {
+            display: block;
+        }
+        
+        .payment-method-info h3 {
             color: #2b6cb0;
             margin-bottom: 20px;
             font-size: 1.5rem;
@@ -138,7 +143,7 @@
             align-items: center;
         }
         
-        .bank-info h3 svg {
+        .payment-method-info h3 svg {
             margin-right: 10px;
         }
         
@@ -194,6 +199,25 @@
             background: #3182ce;
         }
         
+        /* Credit Card Form */
+        .credit-card-form {
+            display: none;
+        }
+        
+        .credit-card-form.active {
+            display: block;
+        }
+        
+        .card-icons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .card-icons img {
+            height: 30px;
+        }
+        
         /* Payment Form */
         .payment-form {
             background: white;
@@ -243,6 +267,45 @@
         .form-group textarea {
             height: 120px;
             resize: vertical;
+        }
+        
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .payment-method {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            padding: 20px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-method:hover {
+            border-color: #4299e1;
+            transform: translateY(-3px);
+        }
+        
+        .payment-method.selected {
+            border-color: #4299e1;
+            background-color: #f0f9ff;
+            box-shadow: 0 5px 15px rgba(66, 153, 225, 0.1);
+        }
+        
+        .payment-method img {
+            height: 35px;
+            margin-bottom: 15px;
+        }
+        
+        .payment-method div {
+            font-weight: 500;
+            color: #4a5568;
         }
         
         .submit-btn {
@@ -320,6 +383,14 @@
         
         /* Responsive */
         @media (max-width: 768px) {
+            .payment-methods {
+                flex-direction: column;
+            }
+            
+            .payment-method {
+                width: 100%;
+            }
+            
             .account-details {
                 grid-template-columns: 1fr;
             }
@@ -341,7 +412,7 @@
         <!-- Page Header -->
         <div class="page-header">
             <h1>Thanh Toán Dịch Vụ VPS</h1>
-            <p>Vui lòng chuyển khoản theo thông tin bên dưới để hoàn tất đơn hàng</p>
+            <p>Hoàn tất đơn hàng của bạn trong vài bước đơn giản</p>
         </div>
         
         <!-- Order Summary -->
@@ -382,7 +453,7 @@
                 <input type="hidden" name="price" id="form-price">
                 <input type="hidden" name="duration" id="form-duration">
                 <input type="hidden" name="total" id="form-total">
-                <input type="hidden" name="payment_method" value="chuyen_khoan">
+                <input type="hidden" name="payment_method" id="form-payment-method">
                 
                 <div class="form-group">
                     <label for="name">Họ và tên</label>
@@ -409,19 +480,33 @@
                     </select>
                 </div>
                 
+                <div class="form-group">
+                    <label>Phương thức thanh toán</label>
+                    <div class="payment-methods">
+                        <div class="payment-method selected" data-method="bank">
+                            <img src="https://cdn-icons-png.flaticon.com/512/196/196566.png" alt="Bank">
+                            <div>Chuyển khoản</div>
+                        </div>
+                        <div class="payment-method" data-method="visa">
+                            <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Visa">
+                            <div>Thẻ Visa/Master</div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="payment-method" name="payment_method" value="bank">
+                </div>
+                
                 <!-- Bank Transfer Info -->
-                <div class="bank-info">
+                <div class="payment-method-info active" id="bank-info">
                     <h3>
                         <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
                             <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
                             <path d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z"/>
                         </svg>
-                        Thông Tin Tài Khoản Thanh Toán
+                        Thông Tin Chuyển Khoản
                     </h3>
                     <p style="margin-bottom: 20px; color: #4a5568;">Vui lòng chuyển khoản theo thông tin dưới đây và ghi rõ nội dung "<strong id="payment-content">[Mã đơn: <span id="order-id-content"></span>] - [Số điện thoại]</strong>"</p>
                     
                     <div class="account-details">
-                        <!-- Ngân hàng Techcombank -->
                         <div class="account-detail">
                             <h4>
                                 <img src="https://logo.clearbit.com/techcombank.com.vn" alt="Techcombank">
@@ -442,7 +527,6 @@
                             <button class="copy-btn" onclick="copyToClipboard('9876543210')">Sao chép số TK</button>
                         </div>
                         
-                        <!-- Ngân hàng MB Bank -->
                         <div class="account-detail">
                             <h4>
                                 <img src="https://logo.clearbit.com/mbbank.com.vn" alt="MB Bank">
@@ -463,7 +547,6 @@
                             <button class="copy-btn" onclick="copyToClipboard('4567890123')">Sao chép số TK</button>
                         </div>
                         
-                        <!-- Ví Momo -->
                         <div class="account-detail">
                             <h4>
                                 <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Icon-MoMo.png" alt="Momo">
@@ -484,7 +567,6 @@
                             <button class="copy-btn" onclick="copyToClipboard('0901234567')">Sao chép số Momo</button>
                         </div>
                         
-                        <!-- Ví ZaloPay -->
                         <div class="account-detail">
                             <h4>
                                 <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Icon-ZaloPay.png" alt="ZaloPay">
@@ -507,6 +589,42 @@
                     </div>
                 </div>
                 
+                <!-- Credit Card Form -->
+                <div class="payment-method-info credit-card-form" id="visa-info">
+                    <h3>
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm11.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-2zm1 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm-1-3A1.5 1.5 0 0 0 10 5.5v1A1.5 1.5 0 0 0 11.5 8h2A1.5 1.5 0 0 0 15 6.5v-1A1.5 1.5 0 0 0 13.5 4h-2zM1 5.5A1.5 1.5 0 0 1 2.5 4h3A1.5 1.5 0 0 1 7 5.5v1A1.5 1.5 0 0 1 5.5 8h-3A1.5 1.5 0 0 1 1 6.5v-1zM2.5 7a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-3z"/>
+                        </svg>
+                        Thanh Toán Bằng Thẻ Visa/Master
+                    </h3>
+                    
+                    <div class="card-icons">
+                        <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Visa">
+                        <img src="https://cdn-icons-png.flaticon.com/512/196/196561.png" alt="Mastercard">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="card-number">Số thẻ</label>
+                        <input type="text" id="card-number" name="card_number" placeholder="1234 5678 9012 3456" maxlength="19">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="card-name">Tên chủ thẻ</label>
+                        <input type="text" id="card-name" name="card_name" placeholder="NGUYEN VAN A">
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-group">
+                            <label for="card-expiry">Ngày hết hạn (MM/YY)</label>
+                            <input type="text" id="card-expiry" name="card_expiry" placeholder="MM/YY" maxlength="5">
+                        </div>
+                        <div class="form-group">
+                            <label for="card-cvv">Mã CVV</label>
+                            <input type="text" id="card-cvv" name="card_cvv" placeholder="123" maxlength="3">
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="important-notice">
                     <strong>Lưu ý quan trọng:</strong>
                     <p>Sau khi thanh toán, vui lòng chụp hình biên lai và gửi qua email <strong>payment@abctech.vn</strong> hoặc gửi tin nhắn đến số điện thoại <strong>1900 1234</strong> để chúng tôi xác nhận thanh toán.</p>
@@ -520,7 +638,7 @@
                 <input type="hidden" name="_next" value="thank-you.html?order_id=">
                 
                 <button type="submit" class="submit-btn">
-                    Xác Nhận Đã Thanh Toán
+                    Hoàn Tất Đặt Hàng
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
                     </svg>
@@ -578,6 +696,47 @@
         document.getElementById('duration-select').addEventListener('change', function() {
             document.getElementById('duration').textContent = this.value;
             updateTotalPrice();
+        });
+        
+        // Xử lý chọn phương thức thanh toán
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', function() {
+                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+                this.classList.add('selected');
+                const methodValue = this.dataset.method;
+                document.getElementById('payment-method').value = methodValue;
+                document.getElementById('form-payment-method').value = methodValue;
+                
+                // Ẩn tất cả các thông tin thanh toán
+                document.querySelectorAll('.payment-method-info').forEach(info => {
+                    info.classList.remove('active');
+                });
+                
+                // Hiển thị thông tin thanh toán tương ứng
+                if (methodValue === 'bank') {
+                    document.getElementById('bank-info').classList.add('active');
+                } else if (methodValue === 'visa') {
+                    document.getElementById('visa-info').classList.add('active');
+                }
+            });
+        });
+        
+        // Format số thẻ khi nhập
+        document.getElementById('card-number').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s+/g, '');
+            if (value.length > 0) {
+                value = value.match(new RegExp('.{1,4}', 'g')).join(' ');
+            }
+            e.target.value = value;
+        });
+        
+        // Format ngày hết hạn khi nhập
+        document.getElementById('card-expiry').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            e.target.value = value;
         });
         
         // Cập nhật nội dung thanh toán khi thay đổi thông tin
