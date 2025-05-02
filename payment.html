@@ -111,6 +111,16 @@
             color: #2b6cb0;
         }
         
+        .order-id {
+            background: #ebf8ff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: #2b6cb0;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
         /* Payment Method Info */
         .payment-method-info {
             display: none;
@@ -389,6 +399,7 @@
         <!-- Order Summary -->
         <div class="order-summary">
             <h2>Thông Tin Đơn Hàng</h2>
+            <div class="order-id">Mã đơn hàng: <span id="order-id">VPS-${generateOrderId()}</span></div>
             <div class="summary-item">
                 <span>Gói VPS:</span>
                 <span id="plan-name">VPS Cơ Bản</span>
@@ -415,13 +426,15 @@
         <div class="payment-form">
             <h2>Thông Tin Thanh Toán</h2>
             <form action="https://formsubmit.co/your-email@example.com" method="POST">
-                <input type="hidden" name="_subject" value="Đơn đặt hàng VPS mới">
+                <input type="hidden" name="_subject" value="[ABC TECH] Đơn đặt hàng VPS mới - #<span id='form-order-id'></span>">
                 <input type="hidden" name="_template" value="table">
                 <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="order_id" id="form-order-id-input">
                 <input type="hidden" name="plan" id="form-plan">
                 <input type="hidden" name="price" id="form-price">
                 <input type="hidden" name="duration" id="form-duration">
                 <input type="hidden" name="total" id="form-total">
+                <input type="hidden" name="payment_method" id="form-payment-method">
                 
                 <div class="form-group">
                     <label for="name">Họ và tên</label>
@@ -440,7 +453,7 @@
                 
                 <div class="form-group">
                     <label for="duration-select">Thời gian thuê</label>
-                    <select id="duration-select" name="duration-select" required>
+                    <select id="duration-select" name="duration" required>
                         <option value="1 tháng">1 tháng</option>
                         <option value="3 tháng">3 tháng (Giảm 5%)</option>
                         <option value="6 tháng">6 tháng (Giảm 10%)</option>
@@ -464,7 +477,7 @@
                             <div>ZaloPay</div>
                         </div>
                     </div>
-                    <input type="hidden" id="payment-method" name="payment-method" value="bank">
+                    <input type="hidden" id="payment-method" name="payment_method" value="bank">
                 </div>
                 
                 <!-- Bank Transfer Info -->
@@ -476,7 +489,7 @@
                         </svg>
                         Thông Tin Chuyển Khoản Ngân Hàng
                     </h3>
-                    <p style="margin-bottom: 20px; color: #4a5568;">Vui lòng chuyển khoản theo thông tin dưới đây và ghi rõ nội dung "<strong id="payment-content">VPS Cơ Bản - [Số điện thoại]</strong>"</p>
+                    <p style="margin-bottom: 20px; color: #4a5568;">Vui lòng chuyển khoản theo thông tin dưới đây và ghi rõ nội dung "<strong id="payment-content">[Mã đơn: <span id="order-id-content"></span>] - [Số điện thoại]</strong>"</p>
                     
                     <div class="account-details">
                         <div class="account-detail">
@@ -545,7 +558,7 @@
                             </div>
                             <div class="detail-row">
                                 <strong>Nội dung:</strong>
-                                <span id="momo-content">VPS Cơ Bản - [Số điện thoại]</span>
+                                <span id="momo-content">[Mã đơn: <span id="momo-order-id"></span>] - [Số điện thoại]</span>
                             </div>
                             <button class="copy-btn" onclick="copyToClipboard('0901234567')">Sao chép số Momo</button>
                         </div>
@@ -576,7 +589,7 @@
                             </div>
                             <div class="detail-row">
                                 <strong>Nội dung:</strong>
-                                <span id="zalopay-content">VPS Cơ Bản - [Số điện thoại]</span>
+                                <span id="zalopay-content">[Mã đơn: <span id="zalopay-order-id"></span>] - [Số điện thoại]</span>
                             </div>
                             <button class="copy-btn" onclick="copyToClipboard('0907654321')">Sao chép số ZaloPay</button>
                         </div>
@@ -593,7 +606,7 @@
                     <textarea id="notes" name="notes" placeholder="Yêu cầu thêm..."></textarea>
                 </div>
                 
-                <input type="hidden" name="_next" value="thank-you.html">
+                <input type="hidden" name="_next" value="thank-you.html?order_id=">
                 
                 <button type="submit" class="submit-btn">
                     Hoàn Tất Đặt Hàng
@@ -618,6 +631,23 @@
     </footer>
 
     <script>
+        // Tạo mã đơn hàng ngẫu nhiên
+        function generateOrderId() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let result = '';
+            for (let i = 0; i < 6; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+        
+        // Khởi tạo đơn hàng
+        const orderId = 'VPS-' + generateOrderId();
+        document.getElementById('order-id').textContent = orderId;
+        document.getElementById('form-order-id-input').value = orderId;
+        document.getElementById('form-order-id').textContent = orderId;
+        document.querySelector('input[name="_next"]').value += orderId;
+        
         // Lấy thông tin từ URL
         const urlParams = new URLSearchParams(window.location.search);
         const plan = urlParams.get('plan');
@@ -646,6 +676,7 @@
                 this.classList.add('selected');
                 const methodValue = this.dataset.method;
                 document.getElementById('payment-method').value = methodValue;
+                document.getElementById('form-payment-method').value = methodValue;
                 
                 // Ẩn tất cả các thông tin thanh toán
                 document.querySelectorAll('.payment-method-info').forEach(info => {
@@ -669,11 +700,14 @@
         
         function updatePaymentContents() {
             const phone = document.getElementById('phone').value || '[Số điện thoại]';
-            const plan = document.getElementById('plan-name').textContent;
+            const orderId = document.getElementById('order-id').textContent;
             
-            document.getElementById('payment-content').textContent = `${plan} - ${phone}`;
-            document.getElementById('momo-content').textContent = `${plan} - ${phone}`;
-            document.getElementById('zalopay-content').textContent = `${plan} - ${phone}`;
+            document.getElementById('payment-content').textContent = `[Mã đơn: ${orderId}] - ${phone}`;
+            document.getElementById('order-id-content').textContent = orderId;
+            document.getElementById('momo-content').textContent = `[Mã đơn: ${orderId}] - ${phone}`;
+            document.getElementById('momo-order-id').textContent = orderId;
+            document.getElementById('zalopay-content').textContent = `[Mã đơn: ${orderId}] - ${phone}`;
+            document.getElementById('zalopay-order-id').textContent = orderId;
         }
         
         // Cập nhật tổng tiền
@@ -717,6 +751,9 @@
                 console.error('Lỗi khi sao chép: ', err);
             });
         }
+        
+        // Khởi tạo nội dung thanh toán
+        updatePaymentContents();
     </script>
 </body>
 </html>
